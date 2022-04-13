@@ -46,7 +46,7 @@ func main() {
 		log.Fatalf("Cannot open %v", dbPath)
 	}
 	if quotes, err := stoic.ReadQuotes(os.Stdin); err == nil {
-		cnt, err := stoic.Save(db, quotes)
+		cnt, err := stoic.SaveQuotes(db, quotes)
 		if err != nil {
 			log.Fatalf("Cannot save quotes: %v", err.Error())
 		}

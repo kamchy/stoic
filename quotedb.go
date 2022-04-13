@@ -2,15 +2,14 @@ package stoic
 
 import (
 	"database/sql"
-	
 	"os"
-	log "github.com/sirupsen/logrus"
+
 	_ "github.com/mattn/go-sqlite3"
+	log "github.com/sirupsen/logrus"
 )
 
 // /DbName is default database name
 const DbName = "quotes.db"
-
 
 // CreateQuotesStatement is sql statement that creates quote table
 const CreateQuotesStatement = `
@@ -20,10 +19,25 @@ const CreateQuotesStatement = `
 		author varchar(100) not null
 );
 `
+
+const CreateThoughtStatement = `
+	create  table if not exists thought (
+		id integer primary key autoincrement,
+		text varchar(1024) unique not null,
+		time ineger not null,
+		quoteid integer not null,
+		foreign key (quoteid) references quote(id)
+	);
+`
+
+// ReadAllQuotesQuery reads all quotes
 const ReadAllQuotesQuery = `select * from quote;`
 
 // InsertQuoteStatement is sql statement that inserts text and author a quote table row
 const InsertQuoteStatement = `insert into quote(text, author) values(?, ?);`
+
+//
+const InsertThoughtStatement = `insert into thought(text, time, quoteid) values(?, ?, ?)`
 
 // Create creates db with given uri string
 func Create(uri string) error {
@@ -44,16 +58,22 @@ func Create(uri string) error {
 		return err
 	}
 	defer db.Close()
-	
+
 	return nil
 }
 
 func createTables(db *sql.DB) error {
-	_, err := db.Exec(CreateQuotesStatement)
-	return err
+	for i, stmt := range []string{CreateQuotesStatement, CreateThoughtStatement} {
+		_, err := db.Exec(stmt)
+		if err != nil {
+			log.Errorf("createTables error for table no %d - %s: %v", i, stmt, err)
+			return err
+		}
+	}
+	return nil
 }
 
-// Open opens existing db
+// Open opens existing db, creating necessary tables
 func Open(uri string) (*sql.DB, error) {
 	log.Printf("Opening db with uri %s", uri)
 	db, err := sql.Open("sqlite3", uri)
@@ -68,8 +88,8 @@ func Open(uri string) (*sql.DB, error) {
 	return db, err
 }
 
-// Save saves to sb a slice pf Quote structs
-func Save(db *sql.DB, qs []Quote) (int64, error) {
+// SaveQuotes saves to sb a slice pf Quote structs
+func SaveQuotes(db *sql.DB, qs []Quote) (int64, error) {
 	ps, err := db.Prepare(InsertQuoteStatement)
 	count := int64(0)
 	if err != nil {
@@ -94,25 +114,39 @@ func Save(db *sql.DB, qs []Quote) (int64, error) {
 	return count, nil
 }
 
-func Read(db *sql.DB) ([]Quote, error) {
+func SaveThought(db *sql.DB, th Thought) (res sql.Result, err error) {
+	ps, err := db.Prepare(InsertThoughtStatement)
+
+	if err != nil {
+		log.Errorf("Error in SaveThought: %v", err)
+		return nil, err
+	}
+
+	defer ps.Close()
+
+	log.Infof("Saving %v", th)
+	res, err = ps.Exec(th.Text, th.Time, th.QuoteId)
+	return
+}
+
+func ReadAllQuotes(db *sql.DB) ([]Quote, error) {
 	log.WithField("method", "read")
 	log.Print("Read started")
 	quotes := make([]Quote, 0)
 	var err error
-	rows, err := db.Query(ReadAllQuotesQuery); 
+	rows, err := db.Query(ReadAllQuotesQuery)
 	if err != nil {
 		log.Printf("Error after executing %s: %v", ReadAllQuotesQuery, err)
 		return quotes, err
 	}
 	defer rows.Close()
 	var q Quote
-	var id = 0 
 	for rows.Next() {
-		if err := rows.Scan(&id, &q.Text, &q.Author); err == nil {
+		if err := rows.Scan(&q.Id, &q.Text, &q.Author); err == nil {
 			quotes = append(quotes, q)
-		} 	
+		}
 	}
 	log.Printf("Read has %v elems", len(quotes))
 	return quotes, err
-	
+
 }
