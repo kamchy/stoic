@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
+	log "github.com/sirupsen/logrus"
 	"os"
 	"path"
 
@@ -37,6 +37,7 @@ func serial(fs ...func(int, stoic.Quote) error) func(int, stoic.Quote) error {
 
 // Read all quotes from stdin and save to -dbpath (by default: stoic.DbName) sqlite3 database
 func main() {
+	log.SetLevel(log.WarnLevel)
 	var dbPath = flag.String("dbpath", stoic.DbName, fmt.Sprintf("Path to a database; default: %v", stoic.DbName))
 	flag.Parse()
 	var absPath = path.Clean(*dbPath)

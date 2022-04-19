@@ -75,12 +75,13 @@ func readQuote(dbname string) *stoic.Quote {
 }
 
 func main() {
-	t := readTemplate("index.tmpl")
+	t := readTemplate("index.html")
 	dbname := os.Args[1]
 	http.HandleFunc("/", quoteHandler(dbname, t))
 	http.HandleFunc("/imgsvg", svgHandler())
 	http.HandleFunc("/add", thoughtHandler(dbname, t))
 	err := http.ListenAndServe(":5000", nil)
+	log.Info("Listening on port 5000")
 	if err != nil {
 		log.Println(err)
 	}

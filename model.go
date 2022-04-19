@@ -9,3 +9,10 @@ type Thought struct {
 	Text string
 	QuoteId int
 }
+
+// Quote represents single quote and contains text and author
+type Quote struct {
+	Text   string
+	Author string
+	Id int
+}

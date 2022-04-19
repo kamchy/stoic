@@ -13,7 +13,9 @@ func format(q *stoic.Quote) {
 	color.Blue(q.Author)
 }
 func main() {
-	if q, err := stoic.ReadRandomQuote(os.Args[1]); err == nil {
+	dbpath := os.Args[1]
+	log.SetLevel(log.WarnLevel)
+	if q, err := stoic.ReadRandomQuote(dbpath); err == nil {
 		format(q)
 	} else {
 		log.Fatalf("Could not read: %v", err)

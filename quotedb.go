@@ -90,6 +90,7 @@ func Open(uri string) (*sql.DB, error) {
 
 // SaveQuotes saves to sb a slice pf Quote structs
 func SaveQuotes(db *sql.DB, qs []Quote) (int64, error) {
+	log.Infof("SaveQuotes gives %d quotes for writing ", len(qs))
 	ps, err := db.Prepare(InsertQuoteStatement)
 	count := int64(0)
 	if err != nil {
@@ -97,6 +98,7 @@ func SaveQuotes(db *sql.DB, qs []Quote) (int64, error) {
 	}
 
 	for _, q := range qs {
+		log.Infof("Save iteration for %v", q)
 		res, err := ps.Exec(q.Text, q.Author)
 		log.Printf("Saving %s %s", q.Text, q.Author)
 		if err != nil {

@@ -3,16 +3,10 @@ package stoic
 import (
 	"bufio"
 	"io"
-	"log"
+	log "github.com/sirupsen/logrus"
 	"strings"
 )
 
-// Quote represents single quote
-type Quote struct {
-	Text   string
-	Author string
-	Id int
-}
 
 func check(e error) {
 	if e != nil {
@@ -27,6 +21,7 @@ func nonEmptyLines(r io.Reader) ([]string, error) {
 		t := scanner.Text()
 		if s := strings.Trim(t, " \t\n"); s != "" {
 			res = append(res, s)
+			log.Infof("nonemptylines appended %v", s)
 		}
 	}
 
@@ -47,7 +42,7 @@ func ReadQuotes(from io.Reader) ([]Quote, error) {
 	if err != nil {
 		return qs, err
 	}
-	for i := 0; i < len(lines)/2; i += 2 {
+	for i := 0; i < len(lines) - 1; i += 2 {
 		q := strings.Split(lines[i], "\"")[1]
 		a := strings.TrimLeft(lines[i+1], "-–")
 		a = strings.TrimRight(a, ".")
