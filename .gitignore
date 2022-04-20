@@ -1,0 +1,5 @@
+read/read
+quote/quote
+**/*.db
+read/simple.txt
+.vscode/
