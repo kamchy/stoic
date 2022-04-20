@@ -3,8 +3,10 @@ package stoic
 import (
 	"bufio"
 	"io"
-	log "github.com/sirupsen/logrus"
 	"strings"
+
+	"github.com/kamchy/stoic/model"
+	log "github.com/sirupsen/logrus"
 )
 
 
@@ -35,10 +37,10 @@ func nonEmptyLines(r io.Reader) ([]string, error) {
 
 // ReadQuotes reads lines using io.Reader and returns
 // slice of Quotes and error
-func ReadQuotes(from io.Reader) ([]Quote, error) {
+func ReadQuotes(from io.Reader) ([]model.Quote, error) {
 	bufreader := bufio.NewReader(from)
 	lines, err := nonEmptyLines(bufreader)
-	qs := make([]Quote, 0)
+	qs := make([]model.Quote, 0)
 	if err != nil {
 		return qs, err
 	}
@@ -46,7 +48,7 @@ func ReadQuotes(from io.Reader) ([]Quote, error) {
 		q := strings.Split(lines[i], "\"")[1]
 		a := strings.TrimLeft(lines[i+1], "-–")
 		a = strings.TrimRight(a, ".")
-		qs = append(qs, Quote{q, a, 0})
+		qs = append(qs, model.Quote{Text: q, Author: a, Id: 0})
 	}
 	return qs, nil
 }

@@ -1,4 +1,4 @@
-package stoic
+package model
 
 import "time"
 

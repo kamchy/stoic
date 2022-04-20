@@ -1,5 +1,6 @@
 read/read
 quote/quote
+browse/browse
 **/*.db
 read/simple.txt
 .vscode/

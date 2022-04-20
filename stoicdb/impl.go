@@ -1,12 +1,26 @@
-package stoic
+package stoicdb
 
 import (
 	"database/sql"
 	"os"
 
+	"github.com/kamchy/stoic/model"
 	_ "github.com/mattn/go-sqlite3"
 	log "github.com/sirupsen/logrus"
 )
+
+type SqliteRepository struct {
+	Name string
+	Db   *sql.DB
+}
+
+func New(dbpath string) (SqliteRepository, error) {
+	db, err := Open(dbpath)
+	if err == nil {
+		return SqliteRepository{dbpath, db}, nil
+	}
+	return SqliteRepository{}, err
+}
 
 // /DbName is default database name
 const DbName = "quotes.db"
@@ -89,9 +103,9 @@ func Open(uri string) (*sql.DB, error) {
 }
 
 // SaveQuotes saves to sb a slice pf Quote structs
-func SaveQuotes(db *sql.DB, qs []Quote) (int64, error) {
+func (repo SqliteRepository) SaveQuotes(qs []model.Quote) (int64, error) {
 	log.Infof("SaveQuotes gives %d quotes for writing ", len(qs))
-	ps, err := db.Prepare(InsertQuoteStatement)
+	ps, err := repo.Db.Prepare(InsertQuoteStatement)
 	count := int64(0)
 	if err != nil {
 		return count, err
@@ -116,33 +130,36 @@ func SaveQuotes(db *sql.DB, qs []Quote) (int64, error) {
 	return count, nil
 }
 
-func SaveThought(db *sql.DB, th Thought) (res sql.Result, err error) {
-	ps, err := db.Prepare(InsertThoughtStatement)
+func (repo SqliteRepository) SaveThought(th model.Thought) (lastInsertId int64, err error) {
+	ps, err := repo.Db.Prepare(InsertThoughtStatement)
 
 	if err != nil {
 		log.Errorf("Error in SaveThought: %v", err)
-		return nil, err
+		return -1, err
 	}
 
 	defer ps.Close()
 
 	log.Infof("Saving %v", th)
-	res, err = ps.Exec(th.Text, th.Time, th.QuoteId)
+	res, err := ps.Exec(th.Text, th.Time, th.QuoteId)
+	if err == nil {
+		lastInsertId, err = res.LastInsertId()
+	}
 	return
 }
 
-func ReadAllQuotes(db *sql.DB) ([]Quote, error) {
+func (repo SqliteRepository) ReadAllQuotes() ([]model.Quote, error) {
 	log.WithField("method", "read")
 	log.Print("Read started")
-	quotes := make([]Quote, 0)
+	quotes := make([]model.Quote, 0)
 	var err error
-	rows, err := db.Query(ReadAllQuotesQuery)
+	rows, err := repo.Db.Query(ReadAllQuotesQuery)
 	if err != nil {
 		log.Printf("Error after executing %s: %v", ReadAllQuotesQuery, err)
 		return quotes, err
 	}
 	defer rows.Close()
-	var q Quote
+	var q model.Quote
 	for rows.Next() {
 		if err := rows.Scan(&q.Id, &q.Text, &q.Author); err == nil {
 			quotes = append(quotes, q)

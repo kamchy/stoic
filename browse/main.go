@@ -9,6 +9,8 @@ import (
 	"time"
 
 	"github.com/kamchy/stoic"
+	"github.com/kamchy/stoic/model"
+	"github.com/kamchy/stoic/stoicdb"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -26,26 +28,26 @@ func readTemplate(tmpl string) *template.Template {
 	return nt
 }
 
-func quoteHandler(dbname string, template *template.Template) http.HandlerFunc {
+func quoteHandler(repo stoic.Repository, template *template.Template) http.HandlerFunc {
 	return func(writer http.ResponseWriter, request *http.Request) {
-		q := readQuote(dbname)
+		q := readQuote(repo)
 		template.Execute(writer, q)
 	}
 }
 
-func thoughtHandler(dbname string, template *template.Template) http.HandlerFunc {
+func thoughtHandler(repo stoic.Repository, template *template.Template) http.HandlerFunc {
 	return func(writer http.ResponseWriter, request *http.Request) {
 		th := request.FormValue("thought")
 		quoteid := request.FormValue("quoteid")
 		id, err := strconv.ParseInt(quoteid, 10, 32)
 		log.Infof("thought: %v for quoteid: %d, error: %v", th, quoteid, err)
 		if err == nil {
-			th := stoic.Thought{
+			th := model.Thought{
 				Text: th, Time: time.Now(),
 				QuoteId: int(id)}
-			saveThought(dbname, th)
+			saveThought(repo, th)
 		}
-		template.Execute(writer, readQuote(dbname))
+		template.Execute(writer, readQuote(repo))
 	}
 
 }
@@ -60,27 +62,33 @@ func svgHandler() func(http.ResponseWriter, *http.Request) {
 
 }
 
-func saveThought(dbname string, th stoic.Thought) {
-	stoic.SaveUserThought(dbname, th)
+func saveThought(repo stoic.Repository, th model.Thought) {
+	repo.SaveThought(th)
 }
-func readQuote(dbname string) *stoic.Quote {
-	// var r io.Reader = strings.NewReader("some io.Reader stream to be read\n")
-	var randQuote *stoic.Quote
-	randQuote, err := stoic.ReadRandomQuote(dbname)
+
+
+func readQuote(repo stoic.Repository) *model.Quote {
+	randQuote, err := stoic.ReadRandomQuote(repo)
 	if err != nil {
-		randQuote.Text = err.Error()
-		randQuote.Author = "whoa!"
+		return &model.Quote{Text: err.Error(), Author: "system"}
 	}
 	return randQuote
 }
 
 func main() {
 	t := readTemplate("index.html")
+	if len(os.Args) < 2 {
+		log.Fatalf("Expected path to database file, got: %v", os.Args)
+	}
 	dbname := os.Args[1]
-	http.HandleFunc("/", quoteHandler(dbname, t))
+	repo, err := stoicdb.New(dbname)
+	if err != nil {
+		log.Fatal(err)
+	}
+	http.HandleFunc("/", quoteHandler(repo, t))
 	http.HandleFunc("/imgsvg", svgHandler())
-	http.HandleFunc("/add", thoughtHandler(dbname, t))
-	err := http.ListenAndServe(":5000", nil)
+	http.HandleFunc("/add", thoughtHandler(repo, t))
+	err = http.ListenAndServe(":5000", nil)
 	log.Info("Listening on port 5000")
 	if err != nil {
 		log.Println(err)
