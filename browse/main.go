@@ -85,9 +85,11 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fileServer := http.FileServer(http.Dir("./static/"))
 	http.HandleFunc("/", quoteHandler(repo, t))
 	http.HandleFunc("/imgsvg", svgHandler())
 	http.HandleFunc("/add", thoughtHandler(repo, t))
+	http.Handle("/static/", http.StripPrefix("/static/", fileServer))
 	err = http.ListenAndServe(":5000", nil)
 	log.Info("Listening on port 5000")
 	if err != nil {
