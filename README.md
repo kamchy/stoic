@@ -3,6 +3,9 @@ Stoic practice app.
 Quotes taken from: 
 https://kidadl.com/quotes/best-stoic-quotes-for-budding-philosophers-to-study
 
+# Screenshot
+![shot.png](shot.png)
+
 # Usage
 
 
@@ -17,12 +20,10 @@ Usage:
 ### Example contents of expected input
 
     200."Freedom is the only worthy goal in life. It is won by disregarding things that lie beyond our control."
-
     -Epitectus
 
     "Another quote"
     -Author
-
 
 ## quote command
 Command `quote` in quote/ directory prints random quote to stdout.
