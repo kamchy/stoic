@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"strings"
 	_ "strings"
 	"time"
 
@@ -28,26 +29,74 @@ func readTemplate(tmpl string) *template.Template {
 	return nt
 }
 
-func quoteHandler(repo stoic.Repository, template *template.Template) http.HandlerFunc {
+type MMap = map[string]string
+type AddQuote struct {
+	*model.Quote
+	Addquote bool
+	Message  MMap
+}
+
+func NewAddQuote(shouldAdd bool) *AddQuote {
+	return &AddQuote{Quote: new(model.Quote),
+		Addquote: shouldAdd,
+		Message:  make(MMap)}
+}
+func (q *AddQuote) isValid() bool {
+	q.validate()
+	log.Infof("isValid called for %v, message is %s", q.Quote, q.Message)
+	return len(q.Message) == 0
+}
+func (q *AddQuote) validate() {
+	if strings.TrimSpace(q.Text) == "" {
+		q.Message["text"] = "Text cannot be empty"
+	}
+
+	if strings.TrimSpace(q.Author) == "" {
+		q.Message["author"] = "Author cannot be empty"
+	}
+}
+
+func quoteHandler(repo stoic.Repository, template *template.Template, shouldAdd bool) http.HandlerFunc {
+
 	return func(writer http.ResponseWriter, request *http.Request) {
-		q := readQuote(repo)
+		q := NewAddQuote(shouldAdd)
+		if request.Method == http.MethodPost {
+			q.Text = request.FormValue("quote")
+			q.Author = request.FormValue("author")
+
+			valid := q.isValid()
+			log.Printf("Posted quote: %v is valid: %v message: %s", q.Quote, valid, q.Message)
+			if valid {
+				repo.SaveQuote(*q.Quote)
+				q.Addquote = false
+			}
+
+		} else {
+			if !shouldAdd {
+				q.Quote = readQuote(repo)
+			}
+		}
+
 		template.Execute(writer, q)
+
 	}
 }
 
 func thoughtHandler(repo stoic.Repository, template *template.Template) http.HandlerFunc {
 	return func(writer http.ResponseWriter, request *http.Request) {
+		q := NewAddQuote(false)
 		th := request.FormValue("thought")
 		quoteid := request.FormValue("quoteid")
 		id, err := strconv.ParseInt(quoteid, 10, 32)
-		log.Infof("thought: %v for quoteid: %d, error: %v", th, quoteid, err)
+		log.Infof("thought: %v for quoteid: %d, error: %v", th, id, err)
 		if err == nil {
 			th := model.Thought{
 				Text: th, Time: time.Now(),
 				QuoteId: int(id)}
 			saveThought(repo, th)
 		}
-		template.Execute(writer, readQuote(repo))
+		q.Quote = readQuote(repo)
+		template.Execute(writer, q)
 	}
 
 }
@@ -65,7 +114,6 @@ func svgHandler() func(http.ResponseWriter, *http.Request) {
 func saveThought(repo stoic.Repository, th model.Thought) {
 	repo.SaveThought(th)
 }
-
 
 func readQuote(repo stoic.Repository) *model.Quote {
 	randQuote, err := stoic.ReadRandomQuote(repo)
@@ -86,7 +134,8 @@ func main() {
 		log.Fatal(err)
 	}
 	fileServer := http.FileServer(http.Dir("./static/"))
-	http.HandleFunc("/", quoteHandler(repo, t))
+	http.HandleFunc("/", quoteHandler(repo, t, false))
+	http.HandleFunc("/addquote", quoteHandler(repo, t, true))
 	http.HandleFunc("/imgsvg", svgHandler())
 	http.HandleFunc("/add", thoughtHandler(repo, t))
 	http.Handle("/static/", http.StripPrefix("/static/", fileServer))

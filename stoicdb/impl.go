@@ -102,6 +102,27 @@ func Open(uri string) (*sql.DB, error) {
 	return db, err
 }
 
+func (repo SqliteRepository) SaveQuote(q model.Quote)(lastInsertId int64, err error) {
+	log.Infof("Saving %v", q)
+	ps, err := repo.Db.Prepare(InsertQuoteStatement)
+
+	if err != nil {
+		log.Errorf("Error in SaveQuote: %v", err)
+		return -1, err
+	}
+
+	defer ps.Close()
+
+	log.Infof("Saving %v", q)
+	res, err := ps.Exec(q.Author, q.Text)
+	if err == nil {
+		lastInsertId, err = res.LastInsertId()
+		q.Id = int(lastInsertId)
+		log.Infof("Saved as %v", q)
+	}
+	return 
+	
+}
 // SaveQuotes saves to sb a slice pf Quote structs
 func (repo SqliteRepository) SaveQuotes(qs []model.Quote) (int64, error) {
 	log.Infof("SaveQuotes gives %d quotes for writing ", len(qs))
@@ -169,3 +190,4 @@ func (repo SqliteRepository) ReadAllQuotes() ([]model.Quote, error) {
 	return quotes, err
 
 }
+

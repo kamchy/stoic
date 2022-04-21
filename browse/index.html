@@ -16,11 +16,71 @@
         <img src="/imgsvg" class="card-img" alt="random graphics"/>
         <div class="card-body">
         <h5 class="card-title">Stoic quote for today:</h5>
-          <p class="card-text">{{.Text }}</p>
-          <p class="card-text">{{.Author}}</p>
-          <form action="" method="get" >
-           <input type="submit" class="btn btn-primary" value="Next"/>
-          </form>
+          {{if not .Addquote  }}
+            <p class="card-text">{{.Text }}</p>
+            <p class="card-text">{{.Author}}</p>
+            <div class="d-grid gap-2 d-md-flex">
+              <form action="/" method="get" >
+              <input 
+                type="submit" 
+                class="btn btn-primary" 
+                value="Next"/>
+              </form>
+              <form action="/addquote" method="get" >
+                <input 
+                  type="submit" 
+                  class="btn btn-warning" 
+                  value="Add"/>
+              </form>
+            </div>
+          {{else}}
+            <form action="/addquote" method="post">
+              <div class="mb-3">
+                {{ $msg := index .Message "text"}}
+                <label for="validationQuote" class="form-label">Quote</label>
+                <textarea
+                class="form-control card-text
+                  {{if $msg }} is-invalid {{else}} is-valid {{end}}"
+                id="validationQuote"
+                name="quote"
+                rows="5"
+                placeholder="Quote..."
+                aria-label="new quote entry textarea"
+                aria-describedby="validationServerMessageText"
+                required
+                >{{.Text}}</textarea>
+                
+                {{with  $msg }}
+                <div id="validationServerMessageText" class="invalid-feedback mb-3">
+                  {{ .  }}
+                </div>
+                {{end}}
+              </div>
+              <div class="mb-3">
+                {{ $msg = index .Message "author"}}
+                <label for="validationAuthor" class="form-label">Author</label>
+                <input 
+                  type="text" 
+                  class="form-control card-text
+                  {{if $msg }} is-invalid {{else}} is-valid {{end}}" 
+                  id="validationAuthor"
+                  name="author"
+                  placeholder="Author name"
+                  aria-describedby="validationServerMessageAuthor"
+                  value="{{.Author}}"
+                  required
+                />
+                
+                {{with  $msg }}
+                  <div id="validationServerMessageAuthor" class="invalid-feedback mb-3">
+                    {{ .  }}
+                  </div>
+                {{end}}
+              </div>
+              
+              <input type="submit" class="btn btn-primary" value="Save"/>
+            </form>
+          {{end}}
         </div>
       </div>
 
@@ -35,9 +95,10 @@
             name="thought"
             rows="5"
             placeholder="Leave some thoughts here..."
-            aria-label="With textarea"></textarea>
+            aria-label="With textarea"
+            required></textarea>
 
-            <input type="submit" class="btn btn-primary" value="Save"/>
+            <input type="submit" class="btn btn-primary" {{if .Addquote}} disabled {{end}} value="Save"/>
             <input name="quoteid" type="hidden" id="quoteid" value="{{.Id}}"/>
           </form>
         </div>
