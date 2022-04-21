@@ -45,7 +45,7 @@ func ReadQuotes(from io.Reader) ([]model.Quote, error) {
 		return qs, err
 	}
 	for i := 0; i < len(lines) - 1; i += 2 {
-		q := strings.Split(lines[i], "\"")[1]
+		q := strings.Trim(lines[i], "\"")
 		a := strings.TrimLeft(lines[i+1], "-–")
 		a = strings.TrimRight(a, ".")
 		qs = append(qs, model.Quote{Text: q, Author: a, Id: 0})
