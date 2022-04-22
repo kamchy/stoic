@@ -15,9 +15,12 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func readTemplate(tmpl string) *template.Template {
+func readTemplate(tmpl ...string) *template.Template {
 	log.Printf("Reading from %v", tmpl)
-	tp, e := template.ParseFiles(tmpl)
+	tp, e := template.ParseFiles(tmpl...)
+	for idx, tt := range tp.Templates() {
+		log.Infof("%d: Template name is %s", idx, tt.Name())
+	}
 	if e == nil {
 		return tp
 	}
@@ -87,6 +90,40 @@ func quoteHandler(repo stoic.Repository, template *template.Template, shouldAdd 
 	}
 }
 
+type AllQuotesData struct {
+	Quotes []model.Quote
+	Error  error
+}
+
+func allQuotesHandler(repo stoic.Repository, template *template.Template) http.HandlerFunc {
+
+	return func(writer http.ResponseWriter, request *http.Request) {
+		qs, err := repo.ReadAllQuotes()
+		log.Info("In all quotes handler")
+		template.Execute(writer, AllQuotesData{Quotes: qs, Error: err})
+	}
+
+}
+
+func removeQuoteHandler(repo stoic.Repository, template *template.Template) http.HandlerFunc {
+
+	return func(writer http.ResponseWriter, request *http.Request) {
+		log.Infof("in removeQuoteHandler: method %s, header: %v", request.Method, request.Header)
+		if request.Method == http.MethodPost {
+			qs := make([]model.Quote, 0)
+			qId := request.FormValue("id")
+			id, err := strconv.ParseInt(qId, 10, 64)
+			if err == nil {
+				err := repo.RemoveQuote(id)
+				if err == nil {
+					qs, err = repo.ReadAllQuotes()
+				}
+			}
+			template.Execute(writer, AllQuotesData{qs, err})
+		}
+	}
+}
+
 func thoughtHandler(repo stoic.Repository, template *template.Template) http.HandlerFunc {
 	return func(writer http.ResponseWriter, request *http.Request) {
 		q := NewAddQuote(false)
@@ -129,7 +166,10 @@ func readQuote(repo stoic.Repository) *model.Quote {
 }
 
 func main() {
-	t := readTemplate("index.html")
+	t := readTemplate("index.html", "quotes.html")
+	idxtemplate := t.Lookup("index.html")
+	qlistTemplate := t.Lookup("quotes.html")
+
 	if len(os.Args) < 2 {
 		log.Fatalf("Expected path to database file, got: %v", os.Args)
 	}
@@ -138,11 +178,14 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	fileServer := http.FileServer(http.Dir("./static/"))
-	http.HandleFunc("/", quoteHandler(repo, t, false))
-	http.HandleFunc("/addquote", quoteHandler(repo, t, true))
+	http.HandleFunc("/", quoteHandler(repo, idxtemplate, false))
+	http.HandleFunc("/addquote", quoteHandler(repo, idxtemplate, true))
+	http.HandleFunc("/quotes", allQuotesHandler(repo, qlistTemplate))
+	http.HandleFunc("/rmquote", removeQuoteHandler(repo, qlistTemplate))
 	http.HandleFunc("/imgsvg", svgHandler())
-	http.HandleFunc("/add", thoughtHandler(repo, t))
+	http.HandleFunc("/add", thoughtHandler(repo, idxtemplate))
 	http.Handle("/static/", http.StripPrefix("/static/", fileServer))
 	err = http.ListenAndServe(":5000", nil)
 	log.Info("Listening on port 5000")

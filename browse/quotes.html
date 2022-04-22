@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+
+    <link href="./static/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <section class="container">
+    <h1 class="title h1"><a href="/">Stoic excercise</a></h1>
+    <h3 class="lead"> All the quotes </h3>
+
+    {{ with .Error }}
+    <p class="danger">{{.}}</p>
+    {{end }}
+
+    {{ with .Quotes}}
+    <div class="row">      
+      {{range . }}
+      <div class="col-md-3">
+        
+        <form action="/rmquote" method="post">
+        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{.Text}}</h5>
+            <small>
+              <button type="submit" class="btn btn-warning">Delete</button>
+            </small>
+          </div>
+          <p class="mb-1">{{.Author}}</p>
+          <input type="hidden" name="id" value="{{.Id}}"/>
+        </a>
+        </form>
+      </div>
+      {{end}}
+    {{end}}
+    </div>
+    </section>
+
+  </body>
+</html>

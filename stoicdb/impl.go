@@ -50,8 +50,10 @@ const ReadAllQuotesQuery = `select * from quote;`
 // InsertQuoteStatement is sql statement that inserts text and author a quote table row
 const InsertQuoteStatement = `insert into quote(text, author) values(?, ?);`
 
-//
+// InsertThoughtStatement is sql statement that insterts a thought with time and quote id
 const InsertThoughtStatement = `insert into thought(text, time, quoteid) values(?, ?, ?)`
+
+const DeleteQuote = `delete from quote where id=?`
 
 // Create creates db with given uri string
 func Create(uri string) error {
@@ -191,3 +193,19 @@ func (repo SqliteRepository) ReadAllQuotes() ([]model.Quote, error) {
 
 }
 
+func (repo SqliteRepository) RemoveQuote(id int64) (err error)  {
+	log.WithField("id", id)
+	log.Info("removing quote")
+	stmt, err := repo.Db.Prepare(DeleteQuote)
+	var num int64 = 0
+	if err != nil {
+		return
+	}
+	res, err := stmt.Exec(id)
+	if err == nil {
+		num, err = res.RowsAffected()
+		log.Infof("Removed %d rows", num)
+	}
+	log.WithField("id", nil)
+	return
+}

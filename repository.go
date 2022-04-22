@@ -19,7 +19,8 @@ type Repository interface {
 	SaveThought(model.Thought) (int64, error)
 	// Save all Quotes
 	SaveQuotes([]model.Quote) (int64, error)
-	SaveQuote(model.Quote)(int64, error)
+	SaveQuote(model.Quote) (int64, error)
+	RemoveQuote(int64) error
 }
 
 // ReadRandomQuote reads and returns a random quote
