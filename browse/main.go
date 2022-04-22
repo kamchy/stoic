@@ -67,7 +67,12 @@ func quoteHandler(repo stoic.Repository, template *template.Template, shouldAdd 
 			valid := q.isValid()
 			log.Printf("Posted quote: %v is valid: %v message: %s", q.Quote, valid, q.Message)
 			if valid {
-				repo.SaveQuote(*q.Quote)
+				id, err := repo.SaveQuote(*q.Quote)
+				if err != nil {
+					q.Message["save"] = err.Error()
+				} else {
+					q.Id = id
+				}
 				q.Addquote = false
 			}
 
