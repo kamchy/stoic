@@ -87,12 +87,12 @@ func thoughtHandler(repo stoic.Repository, template *template.Template) http.Han
 		q := NewAddQuote(false)
 		th := request.FormValue("thought")
 		quoteid := request.FormValue("quoteid")
-		id, err := strconv.ParseInt(quoteid, 10, 32)
+		id, err := strconv.ParseInt(quoteid, 10, 64)
 		log.Infof("thought: %v for quoteid: %d, error: %v", th, id, err)
 		if err == nil {
 			th := model.Thought{
 				Text: th, Time: time.Now(),
-				QuoteId: int(id)}
+				QuoteId: id}
 			saveThought(repo, th)
 		}
 		q.Quote = readQuote(repo)

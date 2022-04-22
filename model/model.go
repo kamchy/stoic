@@ -7,12 +7,12 @@ import "time"
 type Thought struct {
 	Time time.Time
 	Text string
-	QuoteId int
+	QuoteId int64
 }
 
 // Quote represents single quote and contains text and author
 type Quote struct {
 	Text   string
 	Author string
-	Id int
+	Id int64
 }

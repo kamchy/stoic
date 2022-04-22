@@ -117,7 +117,7 @@ func (repo SqliteRepository) SaveQuote(q model.Quote)(lastInsertId int64, err er
 	res, err := ps.Exec(q.Author, q.Text)
 	if err == nil {
 		lastInsertId, err = res.LastInsertId()
-		q.Id = int(lastInsertId)
+		q.Id = lastInsertId
 		log.Infof("Saved as %v", q)
 	}
 	return 
