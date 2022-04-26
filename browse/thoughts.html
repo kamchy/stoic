@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+  <link href="./static/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <section class="container">
+    <h1 class="title h1"><a href="/">Stoic excercise</a></h1>
+    <h4><a href="/quotes">All quotes</a>|<a href="/thoughts">All thoughts</a></h4>
+    {{ $q := .Quote}}
+    <h3 class="lead"> {{len .Thoughts}} thoughts {{if $q}} for quote {{end}}:</h3>
+    {{ with $q }}
+    <figure>
+      <blockquote class="blockquote">
+        <p>{{.Text}}</p>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        {{.Author}}
+      </figcaption>
+      <small>(id: {{.Id}})</small>
+    </figure>
+    {{ end}}
+
+    {{ with .Error }}
+    <p class="danger">{{.}}</p>
+    {{ end }}
+
+    {{ range .Thoughts }}
+    <form action="/thoughts" method="post">
+      <div class="mb-3 border-start border-2 px-2">
+        <div>{{.Text}}</div>
+        <small>{{.Time}}</small>
+        <small>(id: {{.Id}}, quoteid: {{.QuoteId}} {{ if $q }} in context of {{$q.Id}} {{end}} )</small>
+        <button class="btn btn-danger btn-sm" type="submit">x</button>
+      </div>
+      <input type="hidden" name="delete" />
+      <input type="hidden" name="id" value="{{.Id}}" />
+      {{ if $q }}
+      <input type="hidden" name="quoteid" value="{{$q.Id}}" />
+      {{ end}}
+      </a>
+    </form>
+    {{ else }}
+    <h2> No thoughts </h2>
+    {{end}}
+  </section>
+
+</body>
+
+</html>

@@ -9,33 +9,57 @@
   <body>
     <section class="container">
     <h1 class="title h1"><a href="/">Stoic excercise</a></h1>
-    <h3 class="lead"> All the quotes </h3>
+    <h4><a href="/quotes">All quotes</a>|<a href="/thoughts">All thoughts</a></h4>
+    <h3 class="lead"> All the {{.Len}} quotes </h3>
 
     {{ with .Error }}
     <p class="danger">{{.}}</p>
     {{end }}
 
-    {{ with .Quotes}}
+    
+    {{range .Quotes}}
+    <div class="mb-3 border-start border-2 px-2">
+      <form action="/rmquote" method="post">
+        <div>{{.Quote.Text}}</div>
+        <small>{{.Quote.Author}}</small>
+        <small>(id: {{.Quote.Id}})</small>
+        <span class="badge rounded-pill">
+          {{if gt .ThoughtCount 0}}
+          <a href="/thoughts?quoteid={{.Quote.Id}}">{{.ThoughtCount}}</a>
+          {{else}}
+            0
+          {{end}}
+        </span>
+        <button class="btn btn-danger btn-sm" type="submit">x</button>
+        <input type="hidden" name="id" value="{{.Quote.Id}}"/>
+      </form>
+    </div>
+    {{else}}
+      <h2>No quotes found</h2>
+    {{end}}
+    <!-- {{ with .Quotes}}
+
     <div class="row">      
       {{range . }}
       <div class="col-md-3">
         
         <form action="/rmquote" method="post">
-        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{.Text}}</h5>
-            <small>
-              <button type="submit" class="btn btn-warning">Delete</button>
-            </small>
+        <a href="/thoughts?quoteid={{.Id}}" class="list-group-item list-group-item-action" aria-current="true">
+          <div class="d-flex w-100 justify-content-bewteen align-items-start">
+            <h5 class="mb-1">{{.Quote.Text}}</h5>
+            <button class="btn btn-warning" type="submit">x</button>
+            <span class="badge rounded-pill bg-danger">{{.ThoughtCount}}</span>
           </div>
-          <p class="mb-1">{{.Author}}</p>
+          <p class="mb-1">{{.Quote.Author}}</p>
           <input type="hidden" name="id" value="{{.Id}}"/>
         </a>
         </form>
       </div>
       {{end}}
-    {{end}}
-    </div>
+  </div>
+     
+  {{end}}
+   -->
     </section>
 
   </body>
