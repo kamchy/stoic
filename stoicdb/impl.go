@@ -16,6 +16,7 @@ type SqliteRepository struct {
 	Db   *sql.DB
 }
 
+// New creates SqliteRepository for given path
 func New(dbpath string) (SqliteRepository, error) {
 	db, err := open(dbpath)
 	if err == nil {
@@ -24,7 +25,7 @@ func New(dbpath string) (SqliteRepository, error) {
 	return SqliteRepository{}, err
 }
 
-// /DbName is default database name
+//DbName is default database name
 const DbName = "quotes.db"
 
 // CreateQuotesStatement is sql statement that creates quote table
@@ -36,6 +37,7 @@ const CreateQuotesStatement = `
 );
 `
 
+// CreateThoughtStatement creates table thought with quoteid as foreign key to quote table
 const CreateThoughtStatement = `
 	create  table if not exists thought (
 		id integer primary key autoincrement,
@@ -49,8 +51,8 @@ const CreateThoughtStatement = `
 // ReadAllQuotesWithCountQuery reads all quotes
 const ReadAllQuotesWithCountQuery = `select q.id, q.text, q.author, (select count(*) from thought t where t.quoteid=q.id) tcount from quote q order by tcount desc`
 
-//
-const ReadQuoteByIdQuery = `select id, text, author from quote where id=?;`
+// ReadQuoteByIDQuery selects quote with given id
+const ReadQuoteByIDQuery = `select id, text, author from quote where id=?;`
 
 // ThouthsCountForQuoteQuery counts number of thougths for given queryid
 const ThouthsCountForQuoteQuery = `select count(*) from thought t where t.quoteid=?`
@@ -123,7 +125,7 @@ func open(uri string) (*sql.DB, error) {
 }
 
 // SaveQuote saves model.Quote to db and returns its db id (and error)
-func (repo SqliteRepository) SaveQuote(q model.Quote) (lastInsertId int64, err error) {
+func (repo SqliteRepository) SaveQuote(q model.Quote) (lastInsertID int64, err error) {
 	log.Infof("Saving %v", q)
 	ps, err := repo.Db.Prepare(InsertQuoteStatement)
 
@@ -137,8 +139,8 @@ func (repo SqliteRepository) SaveQuote(q model.Quote) (lastInsertId int64, err e
 	log.Infof("Saving %v", q)
 	res, err := ps.Exec(q.Author, q.Text)
 	if err == nil {
-		lastInsertId, err = res.LastInsertId()
-		q.Id = lastInsertId
+		lastInsertID, err = res.LastInsertId()
+		q.Id = lastInsertID
 		log.Infof("Saved as %v", q)
 	}
 	return
@@ -173,7 +175,8 @@ func (repo SqliteRepository) SaveQuotes(qs []model.Quote) (int64, error) {
 	return count, nil
 }
 
-func (repo SqliteRepository) SaveThought(th model.Thought) (lastInsertId int64, err error) {
+// SaveThought saves model.Thought and returns db id
+func (repo SqliteRepository) SaveThought(th model.Thought) (lastInsertID int64, err error) {
 	ps, err := repo.Db.Prepare(InsertThoughtStatement)
 
 	if err != nil {
@@ -186,11 +189,12 @@ func (repo SqliteRepository) SaveThought(th model.Thought) (lastInsertId int64, 
 	log.Infof("Saving %v", th)
 	res, err := ps.Exec(th.Text, th.Time, th.QuoteId)
 	if err == nil {
-		lastInsertId, err = res.LastInsertId()
+		lastInsertID, err = res.LastInsertId()
 	}
 	return
 }
 
+// ReadAllQuotes returns slice of model.QuoteWithCount
 func (repo SqliteRepository) ReadAllQuotes() ([]model.QuoteWithCount, error) {
 	l := log.WithField("method", "ReadAllQuotes")
 	l.Print("Read started")
@@ -213,13 +217,14 @@ func (repo SqliteRepository) ReadAllQuotes() ([]model.QuoteWithCount, error) {
 
 }
 
+// ReadQuote returns model.Quote for given id
 func (repo SqliteRepository) ReadQuote(id int64) (model.Quote, error) {
 	l := log.WithField("method", "ReadQuote")
 	l.Infof("Read quote for id %d", id)
 	var q model.Quote
-	stmt, err := repo.Db.Prepare(ReadQuoteByIdQuery)
+	stmt, err := repo.Db.Prepare(ReadQuoteByIDQuery)
 	if err != nil {
-		log.Printf("Error after executing %s: %v", ReadQuoteByIdQuery, err)
+		log.Printf("Error after executing %s: %v", ReadQuoteByIDQuery, err)
 		return q, err
 	}
 	defer stmt.Close()
@@ -230,6 +235,7 @@ func (repo SqliteRepository) ReadQuote(id int64) (model.Quote, error) {
 
 }
 
+// ThoughtsCountForQuote returns count of thoughts for given quote id
 func (repo SqliteRepository) ThoughtsCountForQuote(id int64) (count int64, err error) {
 	l := log.WithField("method", "ThoughtsCountForQuote")
 	l.Infof("id %d", id)
@@ -246,9 +252,10 @@ func (repo SqliteRepository) ThoughtsCountForQuote(id int64) (count int64, err e
 
 }
 
+// RemoveQuote removes quote with given id
 func (repo SqliteRepository) RemoveQuote(id int64) (err error) {
 	l := log.WithField("id", id)
-	l.Infof("removing quote %d")
+	l.Infof("removing quote %d", id)
 	stmt, err := repo.Db.Prepare(DeleteQuote)
 	var num int64 = 0
 	if err != nil {
