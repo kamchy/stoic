@@ -205,7 +205,6 @@ func (repo SqliteRepository) ReadAllQuotes() ([]model.QuoteWithCount, error) {
 	var q model.QuoteWithCount
 	for rows.Next() {
 		if err := rows.Scan(&q.Quote.Id, &q.Quote.Text, &q.Quote.Author, &q.ThoughtCount); err == nil {
-			l.Infof("Read %v", q)
 			quotes = append(quotes, q)
 		}
 	}
