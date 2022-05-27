@@ -1,799 +1,400 @@
-1."You have passed through life without an opponent—no one can ever know what you are capable of, not even you."
-
--Seneca.
-
-2."Look back over the past, with its changing empires that rose and fell, and you can foresee the future too."
-
--Marcus Aurelius.
-
-3."Stoicism, in our day, is not strength to overcome wishes, but to hide them."
-
--Rollo May, 'Love and Will.'
-
-4."The one who puts the finishing touches on their life each day is never short of time. "
-
--Marcus Aurelius.
-
-5."Sometimes in life, we need a few bad days in order to keep the good ones in perspective."
-
--Colleen Hoover, 'Maybe Someday.'
-
-6."Begin at once to live, and count each separate day as a separate life."
-
--Seneca.
-
-7."It's time you realized that you have something in you more powerful and miraculous than the things that affect you and make you dance like a puppet."
-
+You have passed through life without an opponent—no one can ever know what you are capable of, not even you.
+Seneca.
+Look back over the past, with its changing empires that rose and fell, and you can foresee the future too.
+Marcus Aurelius.
+Stoicism, in our day, is not strength to overcome wishes, but to hide them.
+Rollo May, 'Love and Will.'
+The one who puts the finishing touches on their life each day is never short of time. 
+Marcus Aurelius.
+Sometimes in life, we need a few bad days in order to keep the good ones in perspective.
+Colleen Hoover, 'Maybe Someday.'
+Begin at once to live, and count each separate day as a separate life.
+Seneca.
+It's time you realized that you have something in you more powerful and miraculous than the things that affect you and make you dance like a puppet.
 – Marcus Aurelius.
-
-8."Whatever can happen at any time can happen today."
-
--Seneca.
-
-9."They lose the day in expectation of the night, and the night in fear of the dawn. "
-
--Seneca.
-
-10."There is no better way to grow as a person than to do something you hate every day."
-
--David Goggins.
-
-11."Today I escaped anxiety. Or no, I discarded it, because it was within me, in my own perceptions — not outside."
-
--Marcus Aurelius.
-
-12."I have often wondered how it is that every man loves himself more than all the rest of men, but yet sets less value on his own opinion of himself than on the opinion of others."
-
--Marcus Aurelius.
-
-13."Consult your friend on all things, especially on those which respect yourself. His counsel may then be useful where your own self-love might impair your judgment."
-
--Seneca.
-
-14."To love only what happens, what was destined. No greater harmony. "
-
--Marcus Aurelius.
-
-15."But to recognize that if it’s humanly possible, you can do it too."
-
--Marcus Aurelius.
-
-16."You don’t love yourself enough. Or No great thing is you’d love your nature too, and what it demands of you."
-
--Marcus Aurelius.
-
-17."A fit body, a calm mind, a house full of love. These things cannot be bought — they must be earned."
-
--Naval Ravikant.
-
-18."It never ceases to amaze me: we all love ourselves more than other people, but care more about their opinion than our own."
-
--Marcus Aurelius.
-
-19."People in love often become edgy, dangerous. They lose their sense of perspective."
-
--Charles Bukowski, 'Women.'
-
-20."Think of the life you have lived until now as over and, as a dead man, see what’s left as a bonus and live it according to Nature."
-
--Marcus Aurelius.
-
-21."In your soul, don’t be passive or aggressive. In your life, don’t be all about business."
-
--Marcus Aurelius.
-
-22."Sometimes in life we must fight not only without fear, but also without hope."
-
--Alessandro Pertini.
-
-23."In life, it doesn’t matter what happens to you or where you came from. It matters what you do with what happens and what you’ve been given."
-
--Ryan Holiday.
-
-24."It can ruin your life only if it ruins your character. Otherwise, it cannot harm you — inside or out."
-
--Marcus Aurelius.
-
-25."Sometimes life hits you in the head with a brick. Don’t lose faith."
-
--Steve Jobs.
-
-26."The ultimate power in life is to be completely self-reliant, completely yourself."
-
--Robert Greene.
-
-27."The happiness of your life depends upon the quality of your thoughts."
-
--Marcus Aurelius.
-
-28."Entrust everything willingly to the gods, and then make your way through life—no one’s master and no one’s slave."
-
--Marcus Aurelius.
-
-29."You will find no one willing to share out his money; but to how many does each of us divide up his life!"
-
--Seneca.
-
-30."Mastery of reading and writing requires a master. Still more so life."
-
--Marcus Aurelius.
-
-31."Your perspective on life comes from the cage you were held captive in."
-
--Shannon L. Alder.
-
-32."Life is very short and anxious for those who forget the past, neglect the present, and fear the future."
-
--Seneca.
-
-33."It is more civilized to make fun of life than to bewail it."
-
--Seneca.
-
-34."You could leave life right now. Let that determine what you do and say and think."
-
--Marcus Aurelius.
-
-35."Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth."
-
--Marcus Aurelius.
-
-36."Maybe it's good to put things in perspective, but sometimes, I think that the only perspective is to really be there."
-
--Stephen Chbosky, 'The Perks of Being a Wallflower.'
-
-37."Between stimulus and response, there is a space. In that space is our power to choose our response."
-
--Viktor Frankl.
-
-38."In a little while you will have forgotten everything; in a little while everything will have forgotten you."
-
--Marcus Aurelius.
-
-39."The tranquility that comes when you stop caring what they say. Or think, or do. Only what you do."
-
--Marcus Aurelius.
-
-40."As long as you live, keep learning how to live to err is human, but to persist (in the mistake) is diabolical."
-
--Seneca.
-
-41."Every one of us is, in the cosmic perspective, precious."
-
--Carl Sagan, 'Cosmos.'
-
-42."Be tolerant with others and strict with yourself".
-
--Marcus Aurelius
-
-43."How does it help…to make troubles heavier by bemoaning them?"
-
--Seneca.
-
-44."The robbed that smiles steals something from the thief."
-
--Othello.
-
-45."If a man knows not which port he sails, no wind is favorable."
-
--Seneca.
-
-46."People are frugal in guarding their personal property, but as soon as it comes to squandering time they are most wasteful of the one thing in which it is right to be stingy."
-
--Seneca.
-
-47.'The best revenge is not to be like your enemy."
-
--Marcus Aurelius.
-
-48." If you’ll study even the smallest bit of science, for all practical purposes we are nothing."
-
--Naval Ravikant.
-
-49."Choose not to be harmed — and you won’t feel harmed. Don’t feel harmed — and you haven’t been."
-
--Marcus Aurelius.
-
-50."Sometimes even to live is an act of courage."
-
--Seneca.
-
-51."This is our big mistake: to think we look forward to death. Most of death is already gone. Whatever time has passed is owned by death."
-
--Seneca.
-
-52."Waste no more time arguing what a good man should be, be one."
-
--Marcus Aurelius.
-
-53."Whatever you have been expecting for some time comes as less of a shock."
-
--Seneca.
-
-54."don’t wait to do things that matter, and savor the time you have."
-
--Paul Graham.
-
-55."It’s not that we have little time, but more that we waste a good deal of it."
-
--Seneca.
-
-56."Remember: Matter. How tiny your share of it. Time. How brief and fleeting your allotment of it. Fate. How small a role you play in it."
-
--Marcus Aurelius.
-
-57."The average man is a conformist, accepting miseries and disasters with the stoicism of a cow standing in the rain."
-
-- Colin Wilson.
-
-58."When we are no longer able to change a situation, we are challenged to change ourselves."
-
--Viktor Frankl.
-
-59."Whatever happens at all happens as it should; you will find this true, if you watch narrowly."
-
--Marcus Aurelius.
-
-60."Everything can be taken from a man but one thing: the last of the human freedoms – to choose one’s attitude in any given set of circumstances, to choose one’s own way."
-
--Viktor Frankl.
-
-61."It is not the man who has too little, but the man who craves more, that is poor. "
-
--Seneca.
-
-62."Nothing endures but change."
-
--Heraclitus.
-
-63."The best answer to anger is silence. Agreed. But nature set a limit on that — as it did on eating and drinking"
-
--Marcus Aurelius.
-
-64."There is no genius without a touch of madness."
-
-- Seneca.
-
-65."And it is in your power to wipe out this judgment now."
-
--Marcus Aurelius.
-
-66."He who fears death will never do anything worth of a man who is alive."
-
--Seneca.
-
-67."To be calm is the highest achievement of the self."
-
--Zen proverb.
-
-68. "If it does, you have failed to practice your virtues by going with the hype of pain."
-
--Tiisetso Maloma.
-
-69."Man conquers the world by conquering himself."
-
--Zeno of Citium.
-
-70."We’re never unhappy until we remember why we’re supposed to be unhappy."
-
--Daniel V Chappell.
-
-71."All vices are at odds with nature."
-
--Seneca.
-
-72."It is the power of the mind to be unconquerable."
-
--Seneca.
-
-73."It is the quality rather than the quantity that matters."
-
--Seneca.
-
-74."Uncertainty is an uncomfortable position. But certainty is an absurd one."
-
--Voltaire.
-
-75."Change: nothing inherently bad in the process, nothing inherently good in the result."
-
--Marcus.
-
-76."Ignorance is the cause of fear."
-
--Seneca.
-
-77."We become wiser by adversity; prosperity destroys our appreciation of the right."
-
--Seneca.
-
-78."The good things of prosperity are to be wished; but the good things that belong to adversity are to be admired."
-
--Seneca.
-
-79."Focus on what nature demands, as if you were governed by that alone. Then do that, and accept it, unless your nature as a living being would be degraded by it."
-
--Marcus Aurelius.
-
-80."Whatever anyone does or says, I’m bound to the good. Whatever anyone does or says, I must be what I am and show my true colors."
-
--Marcus Aurelius.
-
-81."Stoicism teaches how to keep a calm and rational mind no matter what happens to you and it helps you understand and focus on what you can control and not worry about and accept what you can’t control."
-
--Jonas Salzgeber.
-
-82."Produce them in your mind, as you know them from experience or from history…All just the same. Only the people different."
-
--Marcus Aurelius.
-
-83."No one can keep you from living as your nature requires. Nothing can happen to you that is not required by Nature."
-
--Marcus Aurelius.
-
-84."To move from one unselfish action to another with God in mind. Only there, delight and stillness."
-
--Marcus Aurelius.
-
-85."Is it the action of a responsible being, part of society, and subject to the same decrees as God?”
-
--Marcus Aurelius.
-
-86."For there is a single harmony. Just as the world forms a single body comprising all bodies, so fate forms a single purpose, comprising all purposes."
-
--Marcus Aurelius.
-
-87."Whatever happens to you is for the good of the world. That would be enough right there. But if you look closely you’ll generally notice something else as well: whatever happens to a single person is for the good of others."
-
--Marcus Aurelius.
-
-88."Nothing, to my way of thinking, is a better proof of a well ordered mind than a man’s ability to stop just where he is and pass some time in his own company."
-
--Seneca.
-
-89."No person has the power to have everything they want, but it is in their power not to want what they don’t have, and to cheerfully put to good use what they do have."
-
--Seneca.
-
-90."If what you have seems insufficient to you, then though you possess the world, you will yet be miserable."
-
--Seneca.
-
-91."Take a deep breath. Get present in the moment and ask yourself what is important this very second."
-
--Greg McKeown, 'Essentialism.'
-
-92."Floods will rob us of one thing, fire of another. These are conditions of our existence which we cannot change."
-
--Seneca, 'Letters from a Stoic.'
-
-93."Do what you will. Even if you tear yourself apart, most people will continue doing the same things."
-
--Marcus Aurelius.
-
-94."He is most powerful who has power over himself."
-
--Seneca.
-
-95."To be evenminded is the greatest virtue."
-
--Heraclitus.
-
-96."I shall never be ashamed of citing a bad author if the line is good."
-
--Seneca.
-
-97."As long as you live, keep learning how to live."
-
--Seneca.
-
-98."Luck is what happens when preparation meets opportunity."
-
--Seneca.
-
-99."Wherever there is a human being, there is an opportunity for a kindness."
-
--Seneca.
-
-100."Difficulties strengthen the mind, as labor does the body."
-
--Seneca.
-
-101."No human thing is of serious importance."
-
--Plato.
-
-102."As is a tale, so is life: not how long it is, but how good it is, is what matters."
-
--Seneca.
-
-103."Life, if well lived, is long enough."
-
--Seneca.
-
-104."It does not matter what you bear, but how you bear it."
-
--Seneca.
-
-105."To be stoic is not to be emotionless, but to remain unaffected by your emotions."
-
-- James Pierce.
-
-106."Don’t aim to be perfect. Aim to be antifragile."
-
--Nassim Nicholas Taleb.
-
-107."Just that you do the right thing. The rest doesn’t matter."
-
--Marcus Aurelius.
-
-108."Order your soul. Reduce your wants."
-
--Augustine of Hippo.
-
-109."I begin to speak only when I’m certain what I’ll say isn’t better left unsaid."
-
--Cato.
-
-110."If you are irritated by every rub, how will your mirror be polished?"
-
--Rumi.
-
-111."The great law of nature is that it never stops. There is no end."
-
--Ryan Holiday.
-
-112."Associate with people who are likely to improve you."
-
--Seneca.
-
-113."Wealth is the slave of the wise. The master of the fool."
-
--Seneca.
-
-114."The mind that is anxious about future events is miserable."
-
--Seneca.
-
-115."We suffer more often in imagination than in reality."
-
--Seneca.
-
-116."The whole future lies in uncertainty: live immediately."
-
--Seneca.
-
-117."The limit is not the sky. The limit is the mind."
-
--Wim Hof.
-
-118."Make the mind tougher by exposing it to adversity."
-
+Whatever can happen at any time can happen today.
+Seneca.
+They lose the day in expectation of the night, and the night in fear of the dawn. 
+Seneca.
+There is no better way to grow as a person than to do something you hate every day.
+David Goggins.
+Today I escaped anxiety. Or no, I discarded it, because it was within me, in my own perceptions — not outside.
+Marcus Aurelius.
+I have often wondered how it is that every man loves himself more than all the rest of men, but yet sets less value on his own opinion of himself than on the opinion of others.
+Marcus Aurelius.
+Consult your friend on all things, especially on those which respect yourself. His counsel may then be useful where your own self-love might impair your judgment.
+Seneca.
+To love only what happens, what was destined. No greater harmony. 
+Marcus Aurelius.
+But to recognize that if it’s humanly possible, you can do it too.
+Marcus Aurelius.
+You don’t love yourself enough. Or No great thing is you’d love your nature too, and what it demands of you.
+Marcus Aurelius.
+A fit body, a calm mind, a house full of love. These things cannot be bought — they must be earned.
+Naval Ravikant.
+It never ceases to amaze me: we all love ourselves more than other people, but care more about their opinion than our own.
+Marcus Aurelius.
+People in love often become edgy, dangerous. They lose their sense of perspective.
+Charles Bukowski, 'Women.'
+Think of the life you have lived until now as over and, as a dead man, see what’s left as a bonus and live it according to Nature.
+Marcus Aurelius.
+In your soul, don’t be passive or aggressive. In your life, don’t be all about business.
+Marcus Aurelius.
+Sometimes in life we must fight not only without fear, but also without hope.
+Alessandro Pertini.
+In life, it doesn’t matter what happens to you or where you came from. It matters what you do with what happens and what you’ve been given.
+Ryan Holiday.
+It can ruin your life only if it ruins your character. Otherwise, it cannot harm you — inside or out.
+Marcus Aurelius.
+Sometimes life hits you in the head with a brick. Don’t lose faith.
+Steve Jobs.
+The ultimate power in life is to be completely self-reliant, completely yourself.
+Robert Greene.
+The happiness of your life depends upon the quality of your thoughts.
+Marcus Aurelius.
+Entrust everything willingly to the gods, and then make your way through life—no one’s master and no one’s slave.
+Marcus Aurelius.
+You will find no one willing to share out his money; but to how many does each of us divide up his life!
+Seneca.
+Mastery of reading and writing requires a master. Still more so life.
+Marcus Aurelius.
+Your perspective on life comes from the cage you were held captive in.
+Shannon L. Alder.
+Life is very short and anxious for those who forget the past, neglect the present, and fear the future.
+Seneca.
+It is more civilized to make fun of life than to bewail it.
+Seneca.
+You could leave life right now. Let that determine what you do and say and think.
+Marcus Aurelius.
+Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth.
+Marcus Aurelius.
+Maybe it's good to put things in perspective, but sometimes, I think that the only perspective is to really be there.
+Stephen Chbosky, 'The Perks of Being a Wallflower.'
+Between stimulus and response, there is a space. In that space is our power to choose our response.
+Viktor Frankl.
+In a little while you will have forgotten everything; in a little while everything will have forgotten you.
+Marcus Aurelius.
+The tranquility that comes when you stop caring what they say. Or think, or do. Only what you do.
+Marcus Aurelius.
+As long as you live, keep learning how to live to err is human, but to persist (in the mistake) is diabolical.
+Seneca.
+Every one of us is, in the cosmic perspective, precious.
+Carl Sagan, 'Cosmos.'
+Be tolerant with others and strict with yourself".
+Marcus Aurelius
+How does it help…to make troubles heavier by bemoaning them?
+Seneca.
+The robbed that smiles steals something from the thief.
+Othello.
+If a man knows not which port he sails, no wind is favorable.
+Seneca.
+People are frugal in guarding their personal property, but as soon as it comes to squandering time they are most wasteful of the one thing in which it is right to be stingy.
+Seneca.
+47.'The best revenge is not to be like your enemy.
+Marcus Aurelius.
+ If you’ll study even the smallest bit of science, for all practical purposes we are nothing.
+Naval Ravikant.
+Choose not to be harmed — and you won’t feel harmed. Don’t feel harmed — and you haven’t been.
+Marcus Aurelius.
+Sometimes even to live is an act of courage.
+Seneca.
+This is our big mistake: to think we look forward to death. Most of death is already gone. Whatever time has passed is owned by death.
+Seneca.
+Waste no more time arguing what a good man should be, be one.
+Marcus Aurelius.
+Whatever you have been expecting for some time comes as less of a shock.
+Seneca.
+don’t wait to do things that matter, and savor the time you have.
+Paul Graham.
+It’s not that we have little time, but more that we waste a good deal of it.
+Seneca.
+Remember: Matter. How tiny your share of it. Time. How brief and fleeting your allotment of it. Fate. How small a role you play in it.
+Marcus Aurelius.
+The average man is a conformist, accepting miseries and disasters with the stoicism of a cow standing in the rain.
+ Colin Wilson.
+When we are no longer able to change a situation, we are challenged to change ourselves.
+Viktor Frankl.
+Whatever happens at all happens as it should; you will find this true, if you watch narrowly.
+Marcus Aurelius.
+Everything can be taken from a man but one thing: the last of the human freedoms – to choose one’s attitude in any given set of circumstances, to choose one’s own way.
+Viktor Frankl.
+It is not the man who has too little, but the man who craves more, that is poor. 
+Seneca.
+Nothing endures but change.
+Heraclitus.
+The best answer to anger is silence. Agreed. But nature set a limit on that — as it did on eating and drinking
+Marcus Aurelius.
+There is no genius without a touch of madness.
+ Seneca.
+And it is in your power to wipe out this judgment now.
+Marcus Aurelius.
+He who fears death will never do anything worth of a man who is alive.
+Seneca.
+To be calm is the highest achievement of the self.
+Zen proverb.
+68. "If it does, you have failed to practice your virtues by going with the hype of pain.
+Tiisetso Maloma.
+Man conquers the world by conquering himself.
+Zeno of Citium.
+We’re never unhappy until we remember why we’re supposed to be unhappy.
+Daniel V Chappell.
+All vices are at odds with nature.
+Seneca.
+It is the power of the mind to be unconquerable.
+Seneca.
+It is the quality rather than the quantity that matters.
+Seneca.
+Uncertainty is an uncomfortable position. But certainty is an absurd one.
+Voltaire.
+Change: nothing inherently bad in the process, nothing inherently good in the result.
+Marcus.
+Ignorance is the cause of fear.
+Seneca.
+We become wiser by adversity; prosperity destroys our appreciation of the right.
+Seneca.
+The good things of prosperity are to be wished; but the good things that belong to adversity are to be admired.
+Seneca.
+Focus on what nature demands, as if you were governed by that alone. Then do that, and accept it, unless your nature as a living being would be degraded by it.
+Marcus Aurelius.
+Whatever anyone does or says, I’m bound to the good. Whatever anyone does or says, I must be what I am and show my true colors.
+Marcus Aurelius.
+Stoicism teaches how to keep a calm and rational mind no matter what happens to you and it helps you understand and focus on what you can control and not worry about and accept what you can’t control.
+Jonas Salzgeber.
+Produce them in your mind, as you know them from experience or from history…All just the same. Only the people different.
+Marcus Aurelius.
+No one can keep you from living as your nature requires. Nothing can happen to you that is not required by Nature.
+Marcus Aurelius.
+To move from one unselfish action to another with God in mind. Only there, delight and stillness.
+Marcus Aurelius.
+Is it the action of a responsible being, part of society, and subject to the same decrees as God?”
+Marcus Aurelius.
+For there is a single harmony. Just as the world forms a single body comprising all bodies, so fate forms a single purpose, comprising all purposes.
+Marcus Aurelius.
+Whatever happens to you is for the good of the world. That would be enough right there. But if you look closely you’ll generally notice something else as well: whatever happens to a single person is for the good of others.
+Marcus Aurelius.
+Nothing, to my way of thinking, is a better proof of a well ordered mind than a man’s ability to stop just where he is and pass some time in his own company.
+Seneca.
+No person has the power to have everything they want, but it is in their power not to want what they don’t have, and to cheerfully put to good use what they do have.
+Seneca.
+If what you have seems insufficient to you, then though you possess the world, you will yet be miserable.
+Seneca.
+Take a deep breath. Get present in the moment and ask yourself what is important this very second.
+Greg McKeown, 'Essentialism.'
+Floods will rob us of one thing, fire of another. These are conditions of our existence which we cannot change.
+Seneca, 'Letters from a Stoic.'
+Do what you will. Even if you tear yourself apart, most people will continue doing the same things.
+Marcus Aurelius.
+He is most powerful who has power over himself.
+Seneca.
+To be evenminded is the greatest virtue.
+Heraclitus.
+I shall never be ashamed of citing a bad author if the line is good.
+Seneca.
+As long as you live, keep learning how to live.
+Seneca.
+Luck is what happens when preparation meets opportunity.
+Seneca.
+Wherever there is a human being, there is an opportunity for a kindness.
+Seneca.
+Difficulties strengthen the mind, as labor does the body.
+Seneca.
+No human thing is of serious importance.
+Plato.
+As is a tale, so is life: not how long it is, but how good it is, is what matters.
+Seneca.
+Life, if well lived, is long enough.
+Seneca.
+It does not matter what you bear, but how you bear it.
+Seneca.
+To be stoic is not to be emotionless, but to remain unaffected by your emotions.
+ James Pierce.
+Don’t aim to be perfect. Aim to be antifragile.
+Nassim Nicholas Taleb.
+Just that you do the right thing. The rest doesn’t matter.
+Marcus Aurelius.
+Order your soul. Reduce your wants.
+Augustine of Hippo.
+I begin to speak only when I’m certain what I’ll say isn’t better left unsaid.
+Cato.
+If you are irritated by every rub, how will your mirror be polished?
+Rumi.
+The great law of nature is that it never stops. There is no end.
+Ryan Holiday.
+Associate with people who are likely to improve you.
+Seneca.
+Wealth is the slave of the wise. The master of the fool.
+Seneca.
+The mind that is anxious about future events is miserable.
+Seneca.
+We suffer more often in imagination than in reality.
+Seneca.
+The whole future lies in uncertainty: live immediately.
+Seneca.
+The limit is not the sky. The limit is the mind.
+Wim Hof.
+Make the mind tougher by exposing it to adversity.
 –Robert Greene.
-
-119."Problems only exist in the human mind."
-
--Anthony de Mello.
-
-120."What injures the hive injures the bee."
-
--Marcus Aurelius.
-
-121."To stop talking about what the good man is like, and just be one."
-
--Marcus Aurelius.
-
-122."When you realize there is nothing lacking, the whole world belongs to you."
-
--Lao Tzu.
-
-123."She released her grievances like handfuls of birdseed: They are there, and they are gone."
-
--Gillian Flynn.
-
-124."No man is good by chance. Virtue is something which must be learned."
-
--Seneca.
-
-125. "You have power over your mind — not outside events. Realize this, and you will find strength."
-
--Marcus Aurelius.
-
-126."If it is not right, do not do it, if it is not true, do not say it."
-
--Marcus Aurelius.
-
-127."That man is happy, whose reason recommends to him the whole posture of his affairs."
-
--Seneca.
-
-128."Self-control is strength. Right thought is mastery. Calmness is power."
-
--James Allen.
-
-129."The willing are led by fate, the reluctant dragged."
-
--Cleanthes.
-
-130."Discomfort is the currency of success."
-
--Brooke Castillo.
-
-131."Is a world without pain possible? Then don’t ask the impossible."
-
--Marcus Aurelius.
-
-132."Learn to detach yourself from the chaos of the battlefield."
-
--Robert Greene.
-
-133."Learn to be indifferent to what makes no difference."
-
--Marcus Aurelius.
-
-134."That man lives badly who does not know how to die well."
-
--Lucius Annaeus Seneca.
-
-135."Endurance is not just the ability to bear a hard thing, but to turn it into glory."
-
--William Barclay.
-
-136."Stoicism is the wisdom of madness and cynicism the madness of wisdom."
-
--Bergen Evans.
-
-137."The stoicism that comes of endurance has something of death in it."
-
--Mary Catherwood.
-
-138."What's the good of being stoical if nobody notices?"
-
--Mason Cooley.
-
-139."The things you think about determine the quality of your mind."
-
--Marcus Aurelius.
-
-140."Once we accept our limits, we go beyond them."
-
--Albert Einstein.
-
-141."Whoever has nothing to hope, let him despair of nothing."
-
--Seneca.
-
-142."Warriors should suffer their pain silently."
-
--Erin Hunter.
-
-143."Respect the past, be open to the future"
-
--Seneca.
-
-144."It’s far better to seem like a downer than to be blindsided or caught off guard."
-
--Ryan Holiday.
-
-145."Stoicism is designed to be medicine for the soul."
-
--Ryan Holiday, 'The Daily Stoic.'
-
-146."Appreciating what you have is the best cure for missing what you have lost."
-
--Mokokoma Mokhonoana.
-
-147."Knowing yourself is the beginning of all wisdom."
-
--Aristotle.
-
-148."Turn your wounds into wisdom."
-
--Oprah Winfrey.
-
-149."Knowing others is intelligence, Knowing yourself is true wisdom."
-
--Lao Tzu, 'Tao Te Ching.'
-
-150."Knowledge speaks, but wisdom listens"
-
--Jimi Hendrix.
-
-151."Even strength must bow to wisdom sometimes."
-
--Rick Riordan.
-
-152."I wanted the whole world or nothing."
-
--Charles Bukowski, 'Post Office.'
-
-153."Failures are finger post s on the road to achievement."
-
--C.S. Lewis.
-
-154."Intelligence consists in ignoring things that are irrelevant."
-
--Nassim Nicholas Taleb.
-
-155."Be so busy building your own life that other people’s... is of no concern."
-
--Ed Latimore.
-
-156."Stay calm and serene regardless of what life throws at you."
-
--Marcus Aurelius.
-
-157."Show people, don't tell people. "
-
--David Goggins.
-
-158."We carry all the power we need inside ourselves already."
-
--J.K. Rowling.
-
-159."When the power of love overcomes the love of power, the world will know peace."
-
--Jimi Hendrix.
-
-160."The past has no power over the present moment."
-
--Eckhart Tolle.
-
-161."Books are the training weights of the mind."
-
--Epictetus.
-
-162."For as time passes we forget what we learned and end up doing the opposite, and hold opinions the opposite of what we should."
-
--Epictetus.
-
-163."Where then do I look for good and evil? Not to uncontrollable externals, but within myself to the choices that are my own..."
-
--Epictetus
-
-164."Curb your desire—don’t set your heart on so many things and you will get what you need."
-
--Epictetus.
-
-165."Unhappy man, who are the slave even of a girl… Why then do you still call yourself free?"
-
--Epictetus.
-
-166."When someone is properly grounded in life, they shouldn’t have to look outside themselves for approval."
-
--Epictetus.
-
-167."That’s why the philosophers warn us not to be satisfied with mere learning, but to add practice and then training."
-
--Epictetus.
-
-168."Anything or anyone capable of angering you becomes your master."
-
--Epictetus.
-
-169."From now on, then, resolve to live as a grown-up who is making progress, and make whatever you think best a law that you never set aside."
-
--Epictetus.
-
-170."Be silent for the most part, or, if you speak, say only what is necessary and in a few words."
-
--Epictetus.
-
-171."It’s not what happens to you, but how you react to it that matters."
-
--Epictetus.
-
-172."We have two ears and one mouth so that we can listen twice as much as we speak."
-
--Epictetus.
-
-173."No great thing is created suddenly, any more than a bunch of grapes or a fig."
-
--Epictetus.
-
-174."Just keep in mind: the more we value things outside our control, the less control we have."
-
--Epictetus.
-
-175."We should always be asking ourselves: 'Is this something that is, or is not, in my control?'"
-
--Epictetus.
-
-176."For it is better to die of hunger, but free from distress and fear, than to live in plenty with a troubled mind."
-
--Epictetus.
-
-177."It isn’t the things themselves that disturb people, but the judgements that they form about them."
-
--Epictetus.
-
-178."Remain silent for the most part, or say only what is essential, and in few words."
-
--Epictetus.
-
-179."If you want to make progress, put up with being perceived as ignorant or naive in worldly matters, don't aspire to a reputation for sagacity."
-
--Epictetus.
-
-180."Caring about the one inevitably means you are going to short change the other."
-
--Epictetus.
-
-181."How long are you going to wait before you demand the best for yourself?"
-
--Epictetus.
-
-182."The key is to keep company only with people who uplift you, whose presence calls forth your best."
-
--Epictetus.
-
-183."What upsets people is not things themselves, but their judgments about these things."
-
--Epictetus.
-
-184."Circumstances don’t make the man, they only reveal him to himself."
-
--Epictetus.
-
-185."Because he not only wants to perform well, he wants to be well received — and the latter lies outside his control."
-
--Epictetus.
-
-186."Progress is not achieved by luck or accident, but by working on yourself daily."
-
--Epictetus.
-
-187."Wealth consists not in having great possessions, but in having few wants."
-
--Epictetus.
-
-188."Don’t explain your philosophy. Embody it."
-
--Epictetus.
-
-189. "I cannot escape death, but at least I can escape the fear of it."
-
--Epictetus.
-
-190."So why be upset if it happens now? If it isn’t now, it’s later."
-
--Epictetus.
-
-191."Very well, what further concern have I? For my part has been fulfilled."
-
--Epictetus, 'Discourses, II.5.13-14.'
-
-192."Remind yourself that what you love is mortal."
-
--Epictetus.
-
-193."How long can you afford to put off who you really want to be? Your nobler self cannot wait any longer."
-
--Epictetus.
-
-194."There is only one way to happiness and that is to cease worrying about things which are beyond the power of our will."
-
--Epitectus
-
-195."Reason is not measured by size or height, but by principle."
-
--Epitectus
-
-196."Try to enjoy the great festival of life with other men."
-
--Epitectus
-
-197."It is difficulties that show what men are."
-
--Epitectus
-
-198."If you want to improve, be content to be thought foolish and stupid."
-
--Epitectus
-
-199."He who laughs at himself never runs out of things to laugh at."
-
--Epitectus
-
-200."Freedom is the only worthy goal in life. It is won by disregarding things that lie beyond our control."
-
--Epitectus
+Problems only exist in the human mind.
+Anthony de Mello.
+What injures the hive injures the bee.
+Marcus Aurelius.
+To stop talking about what the good man is like, and just be one.
+Marcus Aurelius.
+When you realize there is nothing lacking, the whole world belongs to you.
+Lao Tzu.
+She released her grievances like handfuls of birdseed: They are there, and they are gone.
+Gillian Flynn.
+No man is good by chance. Virtue is something which must be learned.
+Seneca.
+125. "You have power over your mind — not outside events. Realize this, and you will find strength.
+Marcus Aurelius.
+If it is not right, do not do it, if it is not true, do not say it.
+Marcus Aurelius.
+That man is happy, whose reason recommends to him the whole posture of his affairs.
+Seneca.
+Self-control is strength. Right thought is mastery. Calmness is power.
+James Allen.
+The willing are led by fate, the reluctant dragged.
+Cleanthes.
+Discomfort is the currency of success.
+Brooke Castillo.
+Is a world without pain possible? Then don’t ask the impossible.
+Marcus Aurelius.
+Learn to detach yourself from the chaos of the battlefield.
+Robert Greene.
+Learn to be indifferent to what makes no difference.
+Marcus Aurelius.
+That man lives badly who does not know how to die well.
+Lucius Annaeus Seneca.
+Endurance is not just the ability to bear a hard thing, but to turn it into glory.
+William Barclay.
+Stoicism is the wisdom of madness and cynicism the madness of wisdom.
+Bergen Evans.
+The stoicism that comes of endurance has something of death in it.
+Mary Catherwood.
+What's the good of being stoical if nobody notices?
+Mason Cooley.
+The things you think about determine the quality of your mind.
+Marcus Aurelius.
+Once we accept our limits, we go beyond them.
+Albert Einstein.
+Whoever has nothing to hope, let him despair of nothing.
+Seneca.
+Warriors should suffer their pain silently.
+Erin Hunter.
+Respect the past, be open to the future
+Seneca.
+It’s far better to seem like a downer than to be blindsided or caught off guard.
+Ryan Holiday.
+Stoicism is designed to be medicine for the soul.
+Ryan Holiday, 'The Daily Stoic.'
+Appreciating what you have is the best cure for missing what you have lost.
+Mokokoma Mokhonoana.
+Knowing yourself is the beginning of all wisdom.
+Aristotle.
+Turn your wounds into wisdom.
+Oprah Winfrey.
+Knowing others is intelligence, Knowing yourself is true wisdom.
+Lao Tzu, 'Tao Te Ching.'
+Knowledge speaks, but wisdom listens
+Jimi Hendrix.
+Even strength must bow to wisdom sometimes.
+Rick Riordan.
+I wanted the whole world or nothing.
+Charles Bukowski, 'Post Office.'
+Failures are finger post s on the road to achievement.
+C.S. Lewis.
+Intelligence consists in ignoring things that are irrelevant.
+Nassim Nicholas Taleb.
+Be so busy building your own life that other people’s... is of no concern.
+Ed Latimore.
+Stay calm and serene regardless of what life throws at you.
+Marcus Aurelius.
+Show people, don't tell people. 
+David Goggins.
+We carry all the power we need inside ourselves already.
+J.K. Rowling.
+When the power of love overcomes the love of power, the world will know peace.
+Jimi Hendrix.
+The past has no power over the present moment.
+Eckhart Tolle.
+Books are the training weights of the mind.
+Epictetus
+For as time passes we forget what we learned and end up doing the opposite, and hold opinions the opposite of what we should.
+Epictetus
+Where then do I look for good and evil? Not to uncontrollable externals, but within myself to the choices that are my own...
+Epictetus
+Curb your desire—don’t set your heart on so many things and you will get what you need.
+Epictetus
+Unhappy man, who are the slave even of a girl… Why then do you still call yourself free?
+Epictetus
+When someone is properly grounded in life, they shouldn’t have to look outside themselves for approval.
+Epictetus
+That’s why the philosophers warn us not to be satisfied with mere learning, but to add practice and then training.
+Epictetus
+Anything or anyone capable of angering you becomes your master.
+Epictetus
+From now on, then, resolve to live as a grown-up who is making progress, and make whatever you think best a law that you never set aside.
+Epictetus
+Be silent for the most part, or, if you speak, say only what is necessary and in a few words.
+Epictetus
+It’s not what happens to you, but how you react to it that matters.
+Epictetus
+We have two ears and one mouth so that we can listen twice as much as we speak.
+Epictetus
+No great thing is created suddenly, any more than a bunch of grapes or a fig.
+Epictetus
+Just keep in mind: the more we value things outside our control, the less control we have.
+Epictetus
+We should always be asking ourselves: 'Is this something that is, or is not, in my control?'
+Epictetus
+For it is better to die of hunger, but free from distress and fear, than to live in plenty with a troubled mind.
+Epictetus
+It isn’t the things themselves that disturb people, but the judgements that they form about them.
+Epictetus
+Remain silent for the most part, or say only what is essential, and in few words.
+Epictetus
+If you want to make progress, put up with being perceived as ignorant or naive in worldly matters, don't aspire to a reputation for sagacity.
+Epictetus
+Caring about the one inevitably means you are going to short change the other.
+Epictetus
+How long are you going to wait before you demand the best for yourself?
+Epictetus
+The key is to keep company only with people who uplift you, whose presence calls forth your best.
+Epictetus
+What upsets people is not things themselves, but their judgments about these things.
+Epictetus
+Circumstances don’t make the man, they only reveal him to himself.
+Epictetus
+Because he not only wants to perform well, he wants to be well received — and the latter lies outside his control.
+Epictetus
+Progress is not achieved by luck or accident, but by working on yourself daily.
+Epictetus
+Wealth consists not in having great possessions, but in having few wants.
+Epictetus
+Don’t explain your philosophy. Embody it.
+Epictetus
+189. "I cannot escape death, but at least I can escape the fear of it.
+Epictetus
+So why be upset if it happens now? If it isn’t now, it’s later.
+Epictetus
+Very well, what further concern have I? For my part has been fulfilled.
+Epictetus, 'Discourses, II.5.13-14.'
+Remind yourself that what you love is mortal.
+Epictetus
+How long can you afford to put off who you really want to be? Your nobler self cannot wait any longer.
+Epictetus
+There is only one way to happiness and that is to cease worrying about things which are beyond the power of our will.
+Epitectus
+Reason is not measured by size or height, but by principle.
+Epitectus
+Try to enjoy the great festival of life with other men.
+Epitectus
+It is difficulties that show what men are.
+Epitectus
+If you want to improve, be content to be thought foolish and stupid.
+Epitectus
+He who laughs at himself never runs out of things to laugh at.
+Epitectus
+Freedom is the only worthy goal in life. It is won by disregarding things that lie beyond our control.
+Epitectus
