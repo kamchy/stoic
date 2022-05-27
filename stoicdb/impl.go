@@ -66,10 +66,11 @@ const InsertQuoteStatement = `insert into quote(text, author) values(?, ?);`
 
 // InsertThoughtStatement is sql statement that insterts a thought with time and quote id
 const InsertThoughtStatement = `insert into thought(text, time, quoteid) values(?, ?, ?)`
-// DeleteQuote is an SQL query to delete quote with given id 
+
+// DeleteQuote is an SQL query to delete quote with given id
 const DeleteQuote = `delete from quote where id=?`
 
-// DeleteThought is an SQL query to delete thought with given id 
+// DeleteThought is an SQL query to delete thought with given id
 const DeleteThought = `delete from thought where id=?`
 
 // Create creates db with given uri string
@@ -265,10 +266,12 @@ func (repo SqliteRepository) RemoveQuote(id int64) (err error) {
 
 const DateTimeFormatGo = "2006-01-02 15:04:05"
 const DateTimeFormatSqlite = "%Y-%m-%d %H:%M:%S"
-type RowsFunc func(string)(*sql.Rows, error)
+
+type RowsFunc func(string) (*sql.Rows, error)
+
 func (repo SqliteRepository) ReadAllThoughts() (ts []model.Thought, err error) {
 	l := log.WithField("method", "readAllThoughts")
-	rowsf := func(s string)(rs *sql.Rows, err error) {
+	rowsf := func(s string) (rs *sql.Rows, err error) {
 		rs, err = repo.Db.Query(s)
 		return
 	}
@@ -277,7 +280,7 @@ func (repo SqliteRepository) ReadAllThoughts() (ts []model.Thought, err error) {
 	return ts, err
 }
 
-func readThoughts(repo SqliteRepository,  query string, rowsfn RowsFunc, l *log.Entry)(ts []model.Thought, err error) {
+func readThoughts(repo SqliteRepository, query string, rowsfn RowsFunc, l *log.Entry) (ts []model.Thought, err error) {
 	querystr := fmt.Sprintf(query, DateTimeFormatSqlite)
 	rows, err := rowsfn(querystr)
 	if err != nil {
@@ -301,12 +304,13 @@ func readThoughts(repo SqliteRepository,  query string, rowsfn RowsFunc, l *log.
 	}
 	return
 }
+
 // ReadThoughtsForQuote reads and returns all thoughts recorded for given quote id
 func (repo SqliteRepository) ReadThoughtsForQuote(qid int64) (ts []model.Thought, err error) {
 	l := log.WithField("method", "readThoghtsForQuote")
 	l.Infof("Read started for id %d", qid)
 
-	rowsfn := func(s string)(rs *sql.Rows, err error) {
+	rowsfn := func(s string) (rs *sql.Rows, err error) {
 		if st, err := repo.Db.Prepare(s); err == nil {
 			rs, err = st.Query(qid)
 			defer st.Close()
@@ -315,7 +319,7 @@ func (repo SqliteRepository) ReadThoughtsForQuote(qid int64) (ts []model.Thought
 	}
 	ts, err = readThoughts(repo, ReadThoughtsForQuote, rowsfn, l)
 	l.Infof("ReadThoughtsForQuote has %v thoughts", len(ts))
-	return 
+	return
 
 }
 

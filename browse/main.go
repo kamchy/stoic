@@ -92,7 +92,7 @@ func quoteHandler(repo stoic.Repository, template *template.Template, shouldAdd 
 
 type AllQuotesData struct {
 	Quotes []model.QuoteWithCount
-	Len int
+	Len    int
 	Error  error
 }
 
@@ -107,11 +107,10 @@ func allQuotesHandler(repo stoic.Repository, template *template.Template) http.H
 }
 func removeThoughtHandler(repo stoic.Repository, template *template.Template) http.HandlerFunc {
 	return func(writer http.ResponseWriter, request *http.Request) {
-		log.Infof("in removeThoughtHandler: method %s, header: %v, form values: %v", request.Method, request.Header,request.Form)
+		log.Infof("in removeThoughtHandler: method %s, header: %v, form values: %v", request.Method, request.Header, request.Form)
 		if request.Method == http.MethodPost {
 			ts := make([]model.Thought, 0)
 			tId := request.FormValue("id")
-			
 			id, err := strconv.ParseInt(tId, 10, 64)
 			q := model.Quote{}
 			if err == nil {
@@ -127,7 +126,6 @@ func removeThoughtHandler(repo stoic.Repository, template *template.Template) ht
 					}
 				}
 			}
-			
 			template.Execute(writer, AllThoughtsData{Thoughts: ts, Quote: &q, Error: err})
 		}
 	}
@@ -155,15 +153,17 @@ func removeQuoteHandler(repo stoic.Repository, template *template.Template) http
 
 type AllThoughtsData struct {
 	Thoughts []model.Thought
-	Quote *model.Quote
-	Error error
+	Quote    *model.Quote
+	Error    error
 }
 
 func thoughtsHandler(repo stoic.Repository, template *template.Template) http.HandlerFunc {
 	return func(writer http.ResponseWriter, request *http.Request) {
 		switch request.Method {
-		case http.MethodGet: allThoughtsHandler(repo, template).ServeHTTP(writer, request)
-		case http.MethodPost: removeThoughtHandler(repo, template).ServeHTTP(writer, request)
+		case http.MethodGet:
+			allThoughtsHandler(repo, template).ServeHTTP(writer, request)
+		case http.MethodPost:
+			removeThoughtHandler(repo, template).ServeHTTP(writer, request)
 		}
 	}
 }
@@ -185,7 +185,7 @@ func allThoughtsHandler(repo stoic.Repository, template *template.Template) http
 					q, err = repo.ReadQuote(qid)
 				}
 			}
-		} 
+		}
 		if quoteidparam == "" || err != nil {
 			l.Info("all thoughts - quoteid not given")
 			ts, err = repo.ReadAllThoughts()
@@ -263,7 +263,7 @@ func main() {
 	http.HandleFunc("/add", thoughtHandler(repo, idxtemplate))
 	http.Handle("/static/", http.StripPrefix("/static/", fileServer))
 	err = http.ListenAndServe(":5000", nil)
-	log.Info("Listening on port 5000")
+	log.Info("Listening on port 5000, go to: \nhttp:/localhost:5000")
 	if err != nil {
 		log.Println(err)
 	}

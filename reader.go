@@ -9,7 +9,6 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-
 func check(e error) {
 	if e != nil {
 		panic(e)
@@ -44,7 +43,7 @@ func ReadQuotes(from io.Reader) ([]model.Quote, error) {
 	if err != nil {
 		return qs, err
 	}
-	for i := 0; i < len(lines) - 1; i += 2 {
+	for i := 0; i < len(lines)-1; i += 2 {
 		q := strings.Trim(lines[i], "\"")
 		a := strings.TrimLeft(lines[i+1], "-–")
 		a = strings.TrimRight(a, ".")

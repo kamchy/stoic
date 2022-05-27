@@ -16,7 +16,7 @@ type Repository interface {
 	// Reads all quotes from database
 	ReadAllQuotes() ([]model.QuoteWithCount, error)
 	//Read quote by id
-	ReadQuote(int64)(model.Quote, error)
+	ReadQuote(int64) (model.Quote, error)
 	// Save single Thought
 	SaveThought(model.Thought) (int64, error)
 	// Save all Quotes
@@ -28,11 +28,11 @@ type Repository interface {
 	// Removes thought with given id
 	RemoveThought(int64) error
 	// Reads all thoughts
-	ReadAllThoughts()([]model.Thought, error)
+	ReadAllThoughts() ([]model.Thought, error)
 	// Reads thoughts for given quoteid
-	ReadThoughtsForQuote(int64)([]model.Thought, error)
+	ReadThoughtsForQuote(int64) ([]model.Thought, error)
 	// ThoughtsCountForQuote returns number of thougths recorded for given query
-	ThoughtsCountForQuote(int64) (int64,error) 
+	ThoughtsCountForQuote(int64) (int64, error)
 }
 
 // ReadRandomQuote reads and returns a random quote
@@ -54,4 +54,3 @@ func ReadRandomQuote(repo Repository) (*model.Quote, error) {
 	}
 	return nil, errors.New("no new quote found")
 }
-

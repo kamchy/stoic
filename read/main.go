@@ -45,7 +45,7 @@ func main() {
 	flag.Parse()
 	var absPath = path.Clean(*dbPath)
 	log.Printf("Path to a database as --dbname arg: %s", absPath)
-	
+
 	repo, err := stoicdb.New(absPath)
 	if err != nil {
 		log.Fatal(err)
