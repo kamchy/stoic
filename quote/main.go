@@ -14,6 +14,7 @@ func format(q *model.Quote) {
 	color.Yellow(q.Text)
 	color.Blue(q.Author)
 }
+/* Prints random quote*/
 func main() {
 	dbpath := os.Args[1]
 	log.SetLevel(log.WarnLevel)

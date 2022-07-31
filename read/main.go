@@ -26,18 +26,6 @@ func printQuote(idx int, quote model.Quote) error {
 	return nil
 }
 
-func serial(fs ...func(int, model.Quote) error) func(int, model.Quote) error {
-	return func(idx int, q model.Quote) error {
-		for _, f := range fs {
-			if err := f(idx, q); err != nil {
-				log.Fatal(err)
-				return err
-			}
-		}
-		return nil
-	}
-}
-
 // Read all quotes from stdin and save to -dbpath (by default: stoic.DbName) sqlite3 database
 func main() {
 	log.SetLevel(log.WarnLevel)
@@ -45,7 +33,7 @@ func main() {
 	flag.Parse()
 	var absPath = path.Clean(*dbPath)
 	log.Printf("Path to a database as --dbname arg: %s", absPath)
-	
+
 	repo, err := stoicdb.New(absPath)
 	if err != nil {
 		log.Fatal(err)

@@ -4,3 +4,4 @@ browse/browse
 **/*.db
 read/simple.txt
 .vscode/
+gui/gui
