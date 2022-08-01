@@ -9,9 +9,8 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// Interface Repository represents abstraction over storage implementations
+// Repository represents abstraction over storage implementations
 // for saving and retrieving quotes and stoic thoughts
-
 type Repository interface {
 	// Reads all quotes from database
 	ReadAllQuotes() ([]model.QuoteWithCount, error)
@@ -28,15 +27,27 @@ type Repository interface {
 	// Removes thought with given id
 	RemoveThought(int64) error
 	// Reads all thoughts
-	ReadAllThoughts() ([]model.Thought, error)
+	ReadAllThoughts() ([]model.ThoughtWithQuote, error)
 	// Reads thoughts for given quoteid
-	ReadThoughtsForQuote(int64) ([]model.Thought, error)
+	ReadThoughtsForQuote(int64) ([]model.ThoughtWithQuote, error)
 	// ThoughtsCountForQuote returns number of thougths recorded for given query
 	ThoughtsCountForQuote(int64) (int64, error)
+	//ReadRandomQuote reads random quote from db
+	ReadRandomQuote() (model.Quote, error)
 }
 
 // ReadRandomQuote reads and returns a random quote
 func ReadRandomQuote(repo Repository) (*model.Quote, error) {
+	quote, err := repo.ReadRandomQuote()
+	if err != nil {
+		log.Error(err.Error())
+		return nil, err
+	}
+	return &quote, nil
+}
+
+// ReadRandomQuoteOld reads and returns a random quote
+func ReadRandomQuoteOld(repo Repository) (*model.Quote, error) {
 
 	quotes, err := repo.ReadAllQuotes()
 	if err != nil {

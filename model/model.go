@@ -11,6 +11,12 @@ type Thought struct {
 	Id      int64
 }
 
+// ThoughtWithQuote is a thought with a quote on which it is based
+type ThoughtWithQuote struct {
+	Thought
+	Quote
+}
+
 // Quote represents single quote and contains text and author
 type Quote struct {
 	Text   string

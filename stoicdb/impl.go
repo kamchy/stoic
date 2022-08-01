@@ -58,10 +58,10 @@ const ReadQuoteByIDQuery = `select id, text, author from quote where id=?;`
 const ThouthsCountForQuoteQuery = `select count(*) from thought t where t.quoteid=?`
 
 // ReadAllThoughtsQuery reads all thoughts; see https://sqlite.org/lang_datefunc.html
-const ReadAllThoughtsQuery = `select strftime("%s", time) tt, text, quoteid, id from thought order by tt desc;`
+const ReadAllThoughtsQuery = `select strftime("%s", t.time) tt, t.text, t.quoteid, t.id, q.text, q.author from thought t left join quote q on t.quoteid=q.id order by tt desc;`
 
 // ReadThoughtsForQuote reads all thoughts for given query id
-const ReadThoughtsForQuote = `select strftime("%s", time) tt, text, quoteid, id from thought where quoteid=? order by tt desc;`
+const ReadThoughtsForQuote = `select strftime("%s", t.time) tt, t.text, t.quoteid, t.id, q.text, q.author from thought t left join quote q on q.id=t.quoteid  where q.id=? order by tt desc;`
 
 // InsertQuoteStatement is sql statement that inserts text and author a quote table row
 const InsertQuoteStatement = `insert into quote(text, author) values(?, ?);`
@@ -75,12 +75,19 @@ const DeleteQuote = `delete from quote where id=?`
 // DeleteThought is an SQL query to delete thought with given id
 const DeleteThought = `delete from thought where id=?`
 
+// ReadRandomQuoteQuery selects random qote from quote table
+const ReadRandomQuoteQuery = "select * from quote order by random() limit 1"
+
 // Create creates db with given uri string
 func Create(uri string) error {
 	log.Printf("Removing %s", uri)
 	os.Remove(uri)
 	log.Printf("Creating %v...", uri)
 	file, err := os.Create(uri) // Create SQLite file
+	if err != nil {
+		log.Fatal(err)
+		return err
+	}
 	defer file.Close()
 	if err != nil {
 		log.Fatal(err.Error())
@@ -275,7 +282,7 @@ const DateTimeFormatSqlite = "%Y-%m-%d %H:%M:%S"
 
 type RowsFunc func(string) (*sql.Rows, error)
 
-func (repo SqliteRepository) ReadAllThoughts() (ts []model.Thought, err error) {
+func (repo SqliteRepository) ReadAllThoughts() (ts []model.ThoughtWithQuote, err error) {
 	l := log.WithField("method", "readAllThoughts")
 	rowsf := func(s string) (rs *sql.Rows, err error) {
 		rs, err = repo.Db.Query(s)
@@ -286,21 +293,30 @@ func (repo SqliteRepository) ReadAllThoughts() (ts []model.Thought, err error) {
 	return ts, err
 }
 
-func readThoughts(repo SqliteRepository, query string, rowsfn RowsFunc, l *log.Entry) (ts []model.Thought, err error) {
+func readThoughts(repo SqliteRepository, query string, rowsfn RowsFunc, l *log.Entry) (ts []model.ThoughtWithQuote, err error) {
 	querystr := fmt.Sprintf(query, DateTimeFormatSqlite)
 	rows, err := rowsfn(querystr)
 	if err != nil {
-		l.Infof("Error after executing %s: %v", querystr, err)
-		return ts, err
+		l.Errorf("Error after executing %s: %v", querystr, err)
+		return nil, err
 	}
 	defer rows.Close()
-	var q model.Thought
+	q := model.ThoughtWithQuote { Thought: model.Thought{
+		Time:    time.Time{},
+		Text:    "",
+		QuoteId: 0,
+		Id:      0,
+	}, Quote: model.Quote{
+		Text:   "",
+		Author: "",
+		Id:     0,
+	}}
 	var t string
 	for rows.Next() {
-		if err := rows.Scan(&t, &q.Text, &q.QuoteId, &q.Id); err == nil {
-			if q.Time, err = time.Parse(DateTimeFormatGo, t); err != nil {
+		if err := rows.Scan(&t, &q.Thought.Text, &q.Thought.QuoteId, &q.Thought.Id, &q.Quote.Text, &q.Quote.Author); err == nil {
+			if q.Thought.Time, err = time.Parse(DateTimeFormatGo, t); err != nil {
 				l.Errorf("Cannot parse time %s as %s", t, time.RFC3339)
-				q.Time = time.Now()
+				q.Thought.Time = time.Now()
 			}
 			l.Info(fmt.Sprintf("Reading %+v", q))
 			ts = append(ts, q)
@@ -312,17 +328,30 @@ func readThoughts(repo SqliteRepository, query string, rowsfn RowsFunc, l *log.E
 }
 
 // ReadThoughtsForQuote reads and returns all thoughts recorded for given quote id
-func (repo SqliteRepository) ReadThoughtsForQuote(qid int64) (ts []model.Thought, err error) {
+func (repo SqliteRepository) ReadThoughtsForQuote(qid int64) (ts []model.ThoughtWithQuote, err error) {
 	l := log.WithField("method", "readThoghtsForQuote")
 	l.Infof("Read started for id %d", qid)
 
 	rowsfn := func(s string) (rs *sql.Rows, err error) {
-		if st, err := repo.Db.Prepare(s); err == nil {
+		l.Infof("rowsfn called for string %s", s)
+		if st, e := repo.Db.Prepare(s); e == nil {
 			rs, err = st.Query(qid)
+			if rs == nil {
+				l.Error("result set for %d and s %s is nil", qid, s)
+			}
+			if err != nil {
+				l.Error(err)
+			}
+			l.Warn("result set for %d and s %s is NOT nil", qid, s)
+			cols, er := rs.Columns()
+			if er == nil {
+				l.Infof("Columns: %s", cols)
+			}
 			defer st.Close()
 		}
 		return
 	}
+
 	ts, err = readThoughts(repo, ReadThoughtsForQuote, rowsfn, l)
 	l.Infof("ReadThoughtsForQuote has %v thoughts", len(ts))
 	return
@@ -337,4 +366,18 @@ func (repo SqliteRepository) RemoveThought(id int64) (err error) {
 	}
 	_, err = s.Exec(id)
 	return
+}
+
+// ReadRandomQuote reads random quote from db
+func (repo SqliteRepository) ReadRandomQuote() (model.Quote, error) {
+	stmt, err := repo.Db.Prepare(ReadRandomQuoteQuery)
+	if err != nil {
+		return model.Quote{}, err
+	}
+	defer stmt.Close()
+	row := stmt.QueryRow()
+	var q model.Quote
+	err = row.Scan(&q.Id, &q.Text, &q.Author)
+	log.Infof("selected random quote with id %d", q.Id)
+	return q, err
 }

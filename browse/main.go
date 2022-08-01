@@ -18,6 +18,9 @@ import (
 func readTemplate(tmpl ...string) *template.Template {
 	log.Printf("Reading from %v", tmpl)
 	tp, e := template.ParseFiles(tmpl...)
+	if e != nil {
+		log.Errorf("Reading templates failed: %v", e)
+	}
 	for idx, tt := range tp.Templates() {
 		log.Infof("%d: Template name is %s", idx, tt.Name())
 	}
@@ -44,11 +47,11 @@ func NewAddQuote(shouldAdd bool) *AddQuote {
 		Addquote: shouldAdd,
 		Message:  make(MMap)}
 }
+
 func (q *AddQuote) isValid() bool {
-	q.validate()
-	log.Infof("isValid called for %v, message is %s", q.Quote, q.Message)
 	return len(q.Message) == 0
 }
+
 func (q *AddQuote) validate() {
 	if strings.TrimSpace(q.Text) == "" {
 		q.Message["text"] = "Text cannot be empty"
@@ -66,7 +69,7 @@ func quoteHandler(repo stoic.Repository, template *template.Template, shouldAdd 
 		if request.Method == http.MethodPost {
 			q.Text = request.FormValue("quote")
 			q.Author = request.FormValue("author")
-
+			q.validate()
 			valid := q.isValid()
 			log.Printf("Posted quote: %v is valid: %v message: %s", q.Quote, valid, q.Message)
 			if valid {
@@ -109,7 +112,7 @@ func removeThoughtHandler(repo stoic.Repository, template *template.Template) ht
 	return func(writer http.ResponseWriter, request *http.Request) {
 		log.Infof("in removeThoughtHandler: method %s, header: %v, form values: %v", request.Method, request.Header, request.Form)
 		if request.Method == http.MethodPost {
-			ts := make([]model.Thought, 0)
+			//ts := make([]model.ThoughtWithQuote, 0)
 			tId := request.FormValue("id")
 			id, err := strconv.ParseInt(tId, 10, 64)
 			q := model.Quote{}
@@ -119,14 +122,16 @@ func removeThoughtHandler(repo stoic.Repository, template *template.Template) ht
 					qId := request.FormValue("quoteid")
 					qidnum, err := strconv.ParseInt(qId, 10, 64)
 					if err == nil {
-						ts, err = repo.ReadThoughtsForQuote(qidnum)
+						ts, err := repo.ReadThoughtsForQuote(qidnum)
 						q, err = repo.ReadQuote(qidnum)
+						template.Execute(writer, AllThoughtsData{Thoughts: ts, Quote: &q, Error: err})
 					} else {
-						ts, err = repo.ReadAllThoughts()
+						ts, err := repo.ReadAllThoughts()
+						template.Execute(writer, AllThoughtsData{Thoughts: ts, Quote: nil, Error: err})
 					}
 				}
 			}
-			template.Execute(writer, AllThoughtsData{Thoughts: ts, Quote: &q, Error: err})
+			//template.Execute(writer, AllThoughtsData{Thoughts: ts, Quote: &q, Error: err})
 		}
 	}
 
@@ -152,7 +157,7 @@ func removeQuoteHandler(repo stoic.Repository, template *template.Template) http
 }
 
 type AllThoughtsData struct {
-	Thoughts []model.Thought
+	Thoughts []model.ThoughtWithQuote
 	Quote    *model.Quote
 	Error    error
 }
@@ -171,13 +176,14 @@ func thoughtsHandler(repo stoic.Repository, template *template.Template) http.Ha
 func allThoughtsHandler(repo stoic.Repository, template *template.Template) http.HandlerFunc {
 	l := log.WithField("method", "allThoughtsHandler")
 	return func(writer http.ResponseWriter, request *http.Request) {
-		var ts []model.Thought
+		var ts []model.ThoughtWithQuote
 		var q model.Quote
 		var err error
+		var qid int64
 		vals := request.URL.Query()
 		quoteidparam := vals.Get("quoteid")
 		if quoteidparam != "" {
-			qid, err := strconv.ParseInt(quoteidparam, 10, 64)
+			qid, err = strconv.ParseInt(quoteidparam, 10, 64)
 			l.Infof("all thoughts for id %d", qid)
 			if err == nil {
 				ts, err = repo.ReadThoughtsForQuote(qid)
@@ -186,7 +192,7 @@ func allThoughtsHandler(repo stoic.Repository, template *template.Template) http
 				}
 			}
 		}
-		if quoteidparam == "" || err != nil {
+		if (quoteidparam == "") || (err != nil) {
 			l.Info("all thoughts - quoteid not given")
 			ts, err = repo.ReadAllThoughts()
 			template.Execute(writer, AllThoughtsData{Thoughts: ts, Error: err, Quote: nil})
@@ -239,6 +245,7 @@ func readQuote(repo stoic.Repository) *model.Quote {
 }
 
 func main() {
+	log.Info("Welcome  in Browse!")
 	t := readTemplate("index.html", "quotes.html", "thoughts.html")
 	idxtemplate := t.Lookup("index.html")
 	qlistTemplate := t.Lookup("quotes.html")

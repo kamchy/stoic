@@ -8,7 +8,9 @@
 </head>
 
 <body>
+
   <section class="container">
+
     <h1 class="title h1"><a href="/">Stoic excercise</a></h1>
     <h4><a href="/quotes">All quotes</a>|<a href="/thoughts">All thoughts</a></h4>
     {{ $q := .Quote}}
@@ -28,27 +30,83 @@
     {{ with .Error }}
     <p class="danger">{{.}}</p>
     {{ end }}
-
-    {{ range .Thoughts }}
-    <form action="/thoughts" method="post">
-      <div class="mb-3 border-start border-2 px-2">
-        <div>{{.Text}}</div>
-        <small>{{.Time}}</small>
-        <small>(id: {{.Id}}, quoteid: {{.QuoteId}} {{ if $q }} in context of {{$q.Id}} {{end}} )</small>
-        <button class="btn btn-danger btn-sm" type="submit">x</button>
-      </div>
-      <input type="hidden" name="delete" />
-      <input type="hidden" name="id" value="{{.Id}}" />
-      {{ if $q }}
-      <input type="hidden" name="quoteid" value="{{$q.Id}}" />
-      {{ end}}
-      </a>
+<!--for test -->
+{{ range .Thoughts }}
+<div class="row border p-3">
+  <div class="col-sm-6 border-end">
+    <h4> {{.Thought.Text}}</h4>
+    <p><small>{{.Thought.Time}}</small></p>
+  </div>
+   <div class="col-sm-5">
+    <p>{{.Quote.Text}}, {{.Quote.Author}}</p>
+    <p><small> Quote id: {{.Thought.QuoteId}}</small></p>
+   </div>
+   <div class="col-sm-1">
+     <form  action="/thoughts" method="post">
+      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+      {{if $q }}
+      <input type="hidden" name="quoteid" value="{{.Thought.QuoteId}}" />
+      {{end}}
+      <input type="hidden" name="id" value="{{.Thought.Id}}" />
+     </form>
+     <form action="/thoughts?id={{.Thought.Id}}{{ if $q}}&qid={{$q.Id}}{{end}}" method="get">
+      <button class="btn btn-sm" type="submit">Edit</button>
     </form>
-    {{ else }}
-    <h2> No thoughts </h2>
-    {{end}}
+   </div>
+</div>
+{{end}}
+  <!-- end test-->
+<!--
+    <div class="row">
+      <div class="list-group col">
+        {{ range .Thoughts }}
+        <a href="#itemthought{{.Id}}" data-quote="{{.Quote.Text}}" data-author="{{.Quote.Author}}" class="thought list-group-item list-group-item-action">
+          <form action="/thoughts" method="post">
+            <div class="d-flex w-100 justify-content-between">
+              <h5>{{.Thought.Text}}</h5>
+              <small>(id: {{.Thought.Id}}, quoteid: {{.Thought.QuoteId}} {{ if $q }} in context of {{$q.Id}} {{end}} )</small>
+            </div>
+            <small>{{.Thought.Time}}</small>
+            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+            <input type="hidden" name="delete"/>
+            <input type="hidden" name="id" value="{{.Thought.Id}}" />
+            {{ if $q }}
+            <input type="hidden" name="quoteid" value="{{$q.Id}}" />
+            {{ end}}
+          </form>
+        </a>
+
+        {{ else }}
+          <h2 class="col"> No thoughts </h2>
+        {{end}}
+      </div>
+      {{if not $q}}
+      <div class="col position-sticky sticky-top" >
+        <h2>This is other col</h2>
+        <p> With some para content</p>
+        <h3 class="h3" id="placeforquote"></h3>
+      </div>
+      {{end}}
+  </div>
+  </div>
+-->
   </section>
 
 </body>
-
+<!--
+<script>
+  console.log("dupa jasiu");
+  document.addEventListener("load", (e) => {
+    console.log("On load called");
+    let els = document.getElementsByClassName("thought");
+    for (el of Array.from(els)) {
+      el.addEventListener("onmouseenter", (e) => {
+        let tgt = e.target
+        console.log("enter", tgt)
+        document.getElementById("placeforquote").innerText = tgt.data
+      })
+    }
+  })
+</script>
+-->
 </html>
