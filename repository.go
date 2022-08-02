@@ -1,10 +1,6 @@
 package stoic
 
 import (
-	"errors"
-	"math/rand"
-	"time"
-
 	"github.com/kamchy/stoic/model"
 	log "github.com/sirupsen/logrus"
 )
@@ -12,23 +8,23 @@ import (
 // Repository represents abstraction over storage implementations
 // for saving and retrieving quotes and stoic thoughts
 type Repository interface {
-	// Reads all quotes from database
+	//ReadAllQuotes reads all quotes from database
 	ReadAllQuotes() ([]model.QuoteWithCount, error)
-	//Read quote by id
+	//ReadQuote Read quote by id
 	ReadQuote(int64) (model.Quote, error)
-	// Save single Thought
+	//SaveThought save single Thought
 	SaveThought(model.Thought) (int64, error)
-	// Save all Quotes
+	//SaveQuotes saves all Quotes; returns number of added rows and error
 	SaveQuotes([]model.Quote) (int64, error)
-	// Save single quote, returns id
+	// SaveQuote saves single quote, returns id and error
 	SaveQuote(model.Quote) (int64, error)
-	// Removes quote with given id
+	// RemoveQuote removes quote with given id, returning error
 	RemoveQuote(int64) error
-	// Removes thought with given id
+	//RemoveThought Removes thought with given id
 	RemoveThought(int64) error
-	// Reads all thoughts
+	//ReadAllThoughts reads all thoughts, returning slice og model.ThoughtWithQuote and error
 	ReadAllThoughts() ([]model.ThoughtWithQuote, error)
-	// Reads thoughts for given quoteid
+	//ReadThoughtsForQuote Reads thoughts for given quote id
 	ReadThoughtsForQuote(int64) ([]model.ThoughtWithQuote, error)
 	// ThoughtsCountForQuote returns number of thougths recorded for given query
 	ThoughtsCountForQuote(int64) (int64, error)
@@ -44,24 +40,4 @@ func ReadRandomQuote(repo Repository) (*model.Quote, error) {
 		return nil, err
 	}
 	return &quote, nil
-}
-
-// ReadRandomQuoteOld reads and returns a random quote
-func ReadRandomQuoteOld(repo Repository) (*model.Quote, error) {
-
-	quotes, err := repo.ReadAllQuotes()
-	if err != nil {
-		log.Error(err.Error())
-		return nil, err
-	}
-
-	log.Print("Read all quotes")
-	var qlen = len(quotes)
-	log.Printf("Found %d quotes", qlen)
-	if qlen > 0 {
-		rand.Seed(time.Now().UnixMilli())
-		randQuote := quotes[rand.Intn(qlen)]
-		return &randQuote.Quote, nil
-	}
-	return nil, errors.New("no new quote found")
 }
