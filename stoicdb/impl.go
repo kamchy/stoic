@@ -337,12 +337,12 @@ func (repo SqliteRepository) ReadThoughtsForQuote(qid int64) (ts []model.Thought
 		if st, e := repo.Db.Prepare(s); e == nil {
 			rs, err = st.Query(qid)
 			if rs == nil {
-				l.Error("result set for %d and s %s is nil", qid, s)
+				l.Errorf("result set for %d and s %s is nil", qid, s)
 			}
 			if err != nil {
 				l.Error(err)
 			}
-			l.Warn("result set for %d and s %s is NOT nil", qid, s)
+			l.Warnf("result set for %d and s %s is NOT nil", qid, s)
 			cols, er := rs.Columns()
 			if er == nil {
 				l.Infof("Columns: %s", cols)
