@@ -1,3 +1,5 @@
+![workflow](https://github.com/kamchy/stoic/actions/workflows/go.yml/badge.svg)
+
 # What is it
 Application for stoic meditation.
 
