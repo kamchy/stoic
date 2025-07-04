@@ -1,66 +1,71 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-
     <link href="./static/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .quote-card {
+        margin-bottom: 1.5rem;
+      }
+      .quote-text {
+        font-size: 1.2rem;
+        font-style: italic;
+      }
+      .quote-author {
+        font-size: 1rem;
+        color: #555;
+      }
+      .quote-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .thought-badge {
+        font-size: 1rem;
+        margin-left: 0.5rem;
+      }
+    </style>
   </head>
 
   <body>
-    <section class="container">
-    <h1 class="title h1"><a href="/">Stoic excercise</a></h1>
-    <h4><a href="/quotes">All quotes</a>|<a href="/thoughts">All thoughts</a></h4>
-    <h3 class="lead"> All the {{.Len}} quotes </h3>
+    <section class="container py-4">
+      <h1 class="title h1 mb-3"><a href="/">Stoic excercise</a></h1>
+      <h4 class="mb-4"><a href="/quotes">All quotes</a> | <a href="/thoughts">All thoughts</a></h4>
+      <h3 class="lead mb-4">All the {{.Len}} quotes</h3>
 
-    {{ with .Error }}
-    <p class="danger">{{.}}</p>
-    {{end }}
+      {{ with .Error }}
+      <p class="alert alert-danger">{{.}}</p>
+      {{end }}
 
-    
-    {{range .Quotes}}
-    <div class="mb-3 border-start border-2 px-2">
-      <form action="/rmquote" method="post">
-        <div>{{.Quote.Text}}</div>
-        <small>{{.Quote.Author}}</small>
-        <small>(id: {{.Quote.Id}})</small>
-        <span class="badge rounded-pill">
-          {{if gt .ThoughtCount 0}}
-          <a href="/thoughts?quoteid={{.Quote.Id}}">{{.ThoughtCount}}</a>
-          {{else}}
-            0
-          {{end}}
-        </span>
-        <button class="btn btn-danger btn-sm" type="submit">x</button>
-        <input type="hidden" name="id" value="{{.Quote.Id}}"/>
-      </form>
-    </div>
-    {{else}}
-      <h2>No quotes found</h2>
-    {{end}}
-    <!-- {{ with .Quotes}}
-
-    <div class="row">      
-      {{range . }}
-      <div class="col-md-3">
-        
-        <form action="/rmquote" method="post">
-        <a href="/thoughts?quoteid={{.Id}}" class="list-group-item list-group-item-action" aria-current="true">
-          <div class="d-flex w-100 justify-content-bewteen align-items-start">
-            <h5 class="mb-1">{{.Quote.Text}}</h5>
-            <button class="btn btn-warning" type="submit">x</button>
-            <span class="badge rounded-pill bg-danger">{{.ThoughtCount}}</span>
+      <div class="row">
+        {{range .Quotes}}
+        <div class="col-md-6 col-lg-4">
+          <div class="card quote-card shadow-sm h-100">
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div class="mb-2 quote-text">{{.Quote.Text}}</div>
+              <div class="mb-2 quote-author">&mdash; {{.Quote.Author}} <small class="text-muted">(id: {{.Quote.Id}})</small></div>
+              <div class="quote-actions mt-auto">
+                <form action="/rmquote" method="post" class="d-inline">
+                  <input type="hidden" name="id" value="{{.Quote.Id}}"/>
+                  <button class="btn btn-danger btn-sm" type="submit" title="Remove quote">&times;</button>
+                </form>
+                <span class="badge bg-primary thought-badge">
+                  {{if gt .ThoughtCount 0}}
+                    <a href="/thoughts?quoteid={{.Quote.Id}}" class="text-white text-decoration-none">{{.ThoughtCount}} thought{{if ne .ThoughtCount 1}}s{{end}}</a>
+                  {{else}}
+                    0 thoughts
+                  {{end}}
+                </span>
+              </div>
+            </div>
           </div>
-          <p class="mb-1">{{.Quote.Author}}</p>
-          <input type="hidden" name="id" value="{{.Id}}"/>
-        </a>
-        </form>
+        </div>
+        {{else}}
+        <div class="col-12">
+          <h2>No quotes found</h2>
+        </div>
+        {{end}}
       </div>
-      {{end}}
-  </div>
-     
-  {{end}}
-   -->
     </section>
-
   </body>
 </html>

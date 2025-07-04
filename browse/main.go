@@ -269,8 +269,8 @@ func main() {
 	http.HandleFunc("/imgsvg", svgHandler())
 	http.HandleFunc("/add", thoughtHandler(repo, idxtemplate))
 	http.Handle("/static/", http.StripPrefix("/static/", fileServer))
-	err = http.ListenAndServe(":5000", nil)
 	log.Info("Listening on port 5000, go to: \nhttp:/localhost:5000")
+	err = http.ListenAndServe(":5000", nil)
 	if err != nil {
 		log.Println(err)
 	}
